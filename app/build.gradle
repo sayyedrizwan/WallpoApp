@@ -6,7 +6,7 @@ apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion '30.0.2'
+    buildToolsVersion '30.0.3'
 
     signingConfigs {
         release {
@@ -21,8 +21,8 @@ android {
         applicationId "com.wallpo.android"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 222
-        versionName "1.06.254595"
+        versionCode 223
+        versionName "1.06.254596"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -54,9 +54,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
-    implementation 'org.jsoup:jsoup:1.13.1'
-
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.android.gms:play-services-location:17.1.0'
 
@@ -91,6 +88,8 @@ dependencies {
     implementation 'com.android.billingclient:billing:3.0.2'
 
     implementation 'com.google.android.gms:play-services-ads:19.6.0'
+
+    implementation 'com.github.omegaes:Android-Link-Preview:1.0.2'
 
     implementation files('libs/aspectjrt-1.7.3.jar')
 

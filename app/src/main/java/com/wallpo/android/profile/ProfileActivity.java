@@ -524,8 +524,7 @@ public class ProfileActivity extends AppCompatActivity {
                     noalbums.setVisibility(View.VISIBLE);
                 }
 
-            } catch (
-                    JSONException e) {
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
         } else {

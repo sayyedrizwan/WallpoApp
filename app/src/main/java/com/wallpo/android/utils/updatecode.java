@@ -1,6 +1,7 @@
 package com.wallpo.android.utils;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -8,10 +9,12 @@ import android.app.WallpaperManager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.ComponentName;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -49,6 +52,20 @@ import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.github.ybq.android.spinkit.SpinKitView;
+import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
+import com.google.android.exoplayer2.extractor.ExtractorsFactory;
+import com.google.android.exoplayer2.source.ExtractorMediaSource;
+import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
+import com.google.android.exoplayer2.trackselection.TrackSelector;
+import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
+import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
+import com.google.android.exoplayer2.upstream.BandwidthMeter;
+import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
+import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -64,6 +81,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.mega4tech.linkpreview.GetLinkPreviewListener;
+import com.mega4tech.linkpreview.LinkPreview;
+import com.mega4tech.linkpreview.LinkUtil;
 import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Error;
 import com.tonyodev.fetch2.Fetch;
@@ -74,8 +94,10 @@ import com.tonyodev.fetch2.Priority;
 import com.tonyodev.fetch2.Request;
 import com.tonyodev.fetch2core.DownloadBlock;
 import com.wallpo.android.R;
+import com.wallpo.android.activity.ViewPostsActivity;
 import com.wallpo.android.activity.WallpaperSetActivity;
 import com.wallpo.android.adapter.messageshareadapter;
+import com.wallpo.android.extra.DeepLinkActivity;
 import com.wallpo.android.getset.Category;
 import com.wallpo.android.getset.ChatUsers;
 import com.wallpo.android.profile.ProfileActivity;
@@ -110,12 +132,14 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 import static android.content.ContentValues.TAG;
+import static android.view.View.GONE;
 import static com.google.firebase.database.ServerValue.TIMESTAMP;
 import static com.wallpo.android.MainActivity.initializeSSLContext;
 
 public class updatecode {
 
     public static String tz = TimeZone.getDefault().getID();
+    public static SimpleExoPlayer player;
 
     public static void updateFCM(final Context context) {
 
@@ -124,7 +148,7 @@ public class updatecode {
         final SharedPreferences sharedPreferences = context.getSharedPreferences("wallpo", Context.MODE_PRIVATE);
         final String id = sharedPreferences.getString("wallpouserid", "");
 
-        if (id.isEmpty()){
+        if (id.isEmpty()) {
             Log.e(TAG, "updateFCM: nouser");
             return;
         }
@@ -177,7 +201,7 @@ public class updatecode {
         OkHttpClient client = new OkHttpClient();
 
         RequestBody postData = new FormBody.Builder().add("date", tz)
-                    .add("userid", id).add("ip", ip).add("fcmtoken", token).build();
+                .add("userid", id).add("ip", ip).add("fcmtoken", token).build();
 
         okhttp3.Request request = new okhttp3.Request.Builder()
                 .url(URLS.lastseenuser)
@@ -220,7 +244,7 @@ public class updatecode {
         final String id = sharedPreferences.getString("wallpouserid", "");
         final String fcmtoken = sharedPreferences.getString("fcmtoken", "");
 
-        if(id.isEmpty()){
+        if (id.isEmpty()) {
             return;
         }
 
@@ -433,7 +457,7 @@ public class updatecode {
 
             if (text.contains("posts")) {
                 String ch = text.substring(text.lastIndexOf("/") + 1);
-             //   int no = Integer.parseInt(ch) * 17147 * 877;
+                //   int no = Integer.parseInt(ch) * 17147 * 877;
                 url = "https://thewallpo.com/posts/" + "R12pQ" + ch + "Wz1P";
             } else if (text.contains("user")) {
                 url = "https://thewallpo.com/" + Common.MESSAGE_DATA;
@@ -472,7 +496,7 @@ public class updatecode {
             find.setVisibility(View.GONE);
 
             loadingbar.setVisibility(View.GONE);
-        }else {
+        } else {
 
             List<ChatUsers> chatsList = new ArrayList<>();
             RecyclerView messagerecyclerview = dialog.findViewById(R.id.messagerecyclerview);
@@ -1241,7 +1265,7 @@ public class updatecode {
                             context.startActivity(intents);
 
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                if(!Settings.canDrawOverlays(context)){
+                                if (!Settings.canDrawOverlays(context)) {
                                     Intent clickintent = new Intent(context, WallpaperWebActivity.class);
                                     clickintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -1283,7 +1307,7 @@ public class updatecode {
                             context.startActivity(intent);
 
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                if(!Settings.canDrawOverlays(context)){
+                                if (!Settings.canDrawOverlays(context)) {
                                     Intent clickintent = new Intent(context, WallpaperWebActivity.class);
                                     clickintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -1587,7 +1611,7 @@ public class updatecode {
         PurchasesUpdatedListener purchaseUpdateListener = (billingResult, list) -> {
 
         };
-        
+
         BillingClient billingClient = BillingClient.newBuilder(context)
                 .setListener(purchaseUpdateListener)
                 .enablePendingPurchases()
@@ -1609,7 +1633,7 @@ public class updatecode {
                             sharedPreferences.edit().putBoolean("userIsPremium", true).apply();
                         }
                     }
-                    
+
                 }
             }
 
@@ -1989,7 +2013,7 @@ public class updatecode {
             clients.newCall(requests).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    ((Activity)context).runOnUiThread(() -> {
+                    ((Activity) context).runOnUiThread(() -> {
                         Toast.makeText(context, context.getResources().getString(R.string.connectionerror), Toast.LENGTH_SHORT).show();
                     });
                 }
@@ -1998,19 +2022,19 @@ public class updatecode {
                 public void onResponse(Call call, Response response) throws IOException {
                     final String data = response.body().string().replaceAll(",\\[]", "");
 
-                    ((Activity)context).runOnUiThread(() -> {
+                    ((Activity) context).runOnUiThread(() -> {
 
                         SharedPreferences sharedusersdata = context.getSharedPreferences("wallpouserdata", Context.MODE_PRIVATE);
                         sharedusersdata.edit().putString(userid + "postsprofile", "").apply();
-                        if (context.toString().contains("ViewPostsActivity")){
+                        if (context.toString().contains("ViewPostsActivity")) {
                             Common.ALBUM_STATUS = "changed";
                         }
 
-                        if (data.contains("successfully")){
+                        if (data.contains("successfully")) {
                             dialog.dismiss();
 
                             new Handler().postDelayed(() -> Toast.makeText(context, context.getResources().getString(R.string.updatedsuccessfullyrefresh), Toast.LENGTH_SHORT).show(), 500);
-                        }else {
+                        } else {
                             Toast.makeText(context, context.getResources().getString(R.string.errorwhileuploadingtryafter), Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -2215,7 +2239,9 @@ public class updatecode {
             if (wallpapersads >= 1) {
                 Log.d(TAG, "loadAds: popup 1");
                 sharedPreferences.edit().putInt("wallpapersads", 0).apply();
-                gads(context, type);
+                new Handler().postDelayed(() -> {
+                    wallpoads(context, type);
+                }, 800);
             }
 
 
@@ -2239,8 +2265,62 @@ public class updatecode {
 
     public static void wallpoads(Context context, String type) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("WallpoAdsList", Context.MODE_PRIVATE);
-//SELECT photos.photoid, photos.caption, photos.categoryid, photos.albumid, photos.datecreated, photos.dateshowed, photos.link, photos.userid, photos.imagepath, photos.likes, photos.trendingcount, ads.uid, ads.extradata FROM ' +
-//			"photos INNER JOIN ads ON photos.photoid = ads.postid WHERE ads.adstype = 'normal' AND ads.points > 0 AND ads.posttype = 'photos' ORDER BY RAND(), ads.points DESC LIMIT 1;
+
+        String adsdata = sharedPreferences.getString("adsdata", "");
+        String previewimg = sharedPreferences.getString("previewimg", "");
+        String userinfos = sharedPreferences.getString("userinfos", "");
+
+        if (adsdata.isEmpty() || adsdata.equals("[]")) {
+            gads(context, type);
+        } else {
+            try {
+                JSONArray array = new JSONArray(adsdata);
+
+                for (int i = 0; i < array.length(); i++) {
+
+                    JSONObject object = array.getJSONObject(i);
+
+                    String photoid = object.getString("photoid");
+                    String caption = object.getString("caption");
+                    String categoryid = object.getString("categoryid");
+                    String albumid = object.getString("albumid");
+                    String datecreated = object.getString("datecreated");
+                    String dateshowed = object.getString("dateshowed");
+                    String link = object.getString("link");
+                    String imagepath = object.getString("imagepath");
+                    String userid = object.getString("userid");
+                    String likes = object.getString("likes");
+                    String trendingcount = object.getString("trendingcount");
+                    String uid = object.getString("uid");
+                    String extradata = object.getString("extradata");
+
+                    if (!photoid.isEmpty()) {
+
+                        JSONArray arrayExtra = new JSONArray(extradata);
+
+                        for (int j = 0; j < arrayExtra.length(); j++) {
+
+                            JSONObject objectExtra = arrayExtra.getJSONObject(j);
+
+                            String headlineone = objectExtra.getString("headlineone");
+                            String headlinetwo = objectExtra.getString("headlinetwo");
+                            String buttonname = objectExtra.getString("buttonname");
+                            String adstype = objectExtra.getString("adstype");
+                            String campignname = objectExtra.getString("campignname");
+
+                            updatecode.showads(context, adstype, headlineone,
+                                    headlinetwo, link, imagepath, buttonname, userid, userinfos, photoid, uid);
+
+                        }
+
+                    }
+
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
         OkHttpClient client = new OkHttpClient();
 
@@ -2261,6 +2341,7 @@ public class updatecode {
             public void onResponse(Call call, final Response response) throws IOException {
                 final String data = response.body().string().replaceAll(",\\[]", "");
 
+
                 sharedPreferences.edit().putString("adsdata", data).apply();
 
                 try {
@@ -2270,11 +2351,79 @@ public class updatecode {
 
                         JSONObject object = array.getJSONObject(i);
 
+                        String photoid = object.getString("photoid");
+                        String caption = object.getString("caption");
+                        String categoryid = object.getString("categoryid");
+                        String albumid = object.getString("albumid");
+                        String datecreated = object.getString("datecreated");
+                        String dateshowed = object.getString("dateshowed");
                         String link = object.getString("link");
+                        String imagepath = object.getString("imagepath");
+                        String userid = object.getString("userid");
+                        String likes = object.getString("likes");
+                        String trendingcount = object.getString("trendingcount");
+                        String uid = object.getString("uid");
+                        String extradata = object.getString("extradata");
 
-                        if(!link.isEmpty()){
 
-                        }
+                        final OkHttpClient client = new OkHttpClient();
+                        RequestBody postData = new FormBody.Builder().add("userid", userid).build();
+
+                        okhttp3.Request request = new okhttp3.Request.Builder()
+                                .url(URLS.userinfo)
+                                .post(postData)
+                                .addHeader("Content-Type", "application/x-www-form-urlencoded")
+                                .build();
+
+                        client.newCall(request).enqueue(new Callback() {
+                            @Override
+                            public void onFailure(Call call, IOException e) {
+                                Log.d(TAG, "onFailure: error");
+                            }
+
+                            @Override
+                            public void onResponse(Call call, Response response) throws IOException {
+                                final String data = response.body().string().replaceAll(",\\[]", "");
+
+                                sharedPreferences.edit().putString("userinfos", data).apply();
+
+                            }
+                        });
+
+
+                        LinkUtil.getInstance().getLinkPreview(context,
+                                imagepath, new GetLinkPreviewListener() {
+                                    @Override
+                                    public void onSuccess(LinkPreview linkPreview) {
+                                        ((Activity) context).runOnUiThread(() -> {
+                                            try {
+
+                                                sharedPreferences.edit().putString("previewimg", String.valueOf(linkPreview.getImageFile())).apply();
+
+                                                Glide.with(context).load(linkPreview.getImageFile()).centerCrop()
+                                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                                        .skipMemoryCache(false);
+
+                                                if (type.equals("infolaytxt")) {
+
+                                                    sharedPreferences.edit().putString("previewtitle", linkPreview.getTitle()).apply();
+
+                                                }
+
+                                            } catch (IllegalArgumentException e) {
+                                                Log.e("searchadapter", "onBindViewHolder: ", e);
+                                            } catch (IllegalStateException e) {
+
+                                                Log.e("act", "onBindViewHolder: ", e);
+                                            }
+                                        });
+                                    }
+
+                                    @Override
+                                    public void onFailed(Exception e) {
+
+                                    }
+                                });
 
                     }
 
@@ -2377,6 +2526,237 @@ public class updatecode {
     }
 
 
+    public static void showads(Context context, String type, String oneheadline1,
+                               String oneheadline2, String link, String imagepath, String visit, String userid,
+                               String userinfo, String photoid, String uid) {
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences("WallpoAdsList", Context.MODE_PRIVATE);
+
+        Dialog dialog = new Dialog(context, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+
+        switch (type) {
+            case "profileshow":
+                dialog.setContentView(R.layout.profileshowlayout);
+                break;
+            case "infolaytxt":
+                dialog.setContentView(R.layout.infoadslayout);
+                break;
+            case "onlyposts":
+                dialog.setContentView(R.layout.onlypostslayout);
+                break;
+            case "whole":
+                dialog.setContentView(R.layout.wholefocuslayout);
+                break;
+            case "detailfocus":
+                dialog.setContentView(R.layout.detailfocuslayout);
+                break;
+            default:
+                dialog.setContentView(R.layout.defualtadslayout);
+                break;
+        }
+
+        SharedPreferences sharedPreferencesProfile = context.getSharedPreferences("wallpo", Context.MODE_PRIVATE);
+
+        ImageView adsbottomimg = dialog.findViewById(R.id.adsbottomimg);
+        ImageView mainadsimg = dialog.findViewById(R.id.mainadsimg);
+        ImageView profilepic = dialog.findViewById(R.id.profilepic);
+        AppCompatTextView displayname = dialog.findViewById(R.id.displayname);
+        AppCompatTextView username = dialog.findViewById(R.id.username);
+        AppCompatTextView onetext = dialog.findViewById(R.id.onetext);
+        AppCompatTextView redirectbtn = dialog.findViewById(R.id.redirectbtn);
+        AppCompatTextView adsdesc = dialog.findViewById(R.id.adsdesc);
+        CardView redirectposts = dialog.findViewById(R.id.redirectposts);
+
+        SimpleExoPlayerView videoview = dialog.findViewById(R.id.videoview);
+
+        if (oneheadline2.isEmpty()) {
+            adsdesc.setVisibility(GONE);
+        }
+        username.setOnClickListener(view -> {
+            increaseno(uid, "wallpaper");
+            Intent i = new Intent(context, ProfileActivity.class);
+            player.setPlayWhenReady(false);
+            player.getPlaybackState();
+            sharedPreferencesProfile.edit().putString("useridprofile", String.valueOf(userid)).apply();
+            sharedPreferencesProfile.edit().putString("displaynameprofile", "").apply();
+
+            context.startActivity(i);
+        });
+        displayname.setOnClickListener(view -> {
+            increaseno(uid, "wallpaper");
+            Intent i = new Intent(context, ProfileActivity.class);
+            player.setPlayWhenReady(false);
+            player.getPlaybackState();
+            sharedPreferencesProfile.edit().putString("useridprofile", String.valueOf(userid)).apply();
+            sharedPreferencesProfile.edit().putString("displaynameprofile", "").apply();
+
+            context.startActivity(i);
+        });
+        profilepic.setOnClickListener(view -> {
+            increaseno(uid, "wallpaper");
+            Intent i = new Intent(context, ProfileActivity.class);
+            player.setPlayWhenReady(false);
+            player.getPlaybackState();
+            sharedPreferencesProfile.edit().putString("useridprofile", String.valueOf(userid)).apply();
+            sharedPreferencesProfile.edit().putString("displaynameprofile", "").apply();
+
+            context.startActivity(i);
+        });
+        redirectposts.setOnClickListener(view -> {
+
+            increaseno(uid, "wallpaper");
+            player.setPlayWhenReady(false);
+            player.getPlaybackState();
+            Intent clickintent = new Intent(context, DeepLinkActivity.class);
+            clickintent.setData(Uri.parse("posts/" + photoid));
+            context.startActivity(clickintent);
+        });
+        RelativeLayout redirectbutton = dialog.findViewById(R.id.redirectbutton);
+        redirectbutton.setOnClickListener(view -> {
+
+            increaseno(uid, "wallpaper");
+            if (link.isEmpty()) {
+                redirectbutton.setVisibility(GONE);
+                return;
+            }
+            Intent viewIntent;
+            if (link.contains("https://") || link.contains("http://")) {
+                viewIntent = new Intent("android.intent.action.VIEW",
+                        Uri.parse(link));
+            } else {
+                viewIntent = new Intent("android.intent.action.VIEW",
+                        Uri.parse("https://" + link));
+            }
+            context.startActivity(viewIntent);
+        });
+
+        displayname.setOnClickListener(view -> {
+            increaseno(uid, "wallpaper");
+            Intent i = new Intent(context, ProfileActivity.class);
+            player.setPlayWhenReady(false);
+            player.getPlaybackState();
+            sharedPreferencesProfile.edit().putString("useridprofile", String.valueOf(userid)).apply();
+            sharedPreferencesProfile.edit().putString("displaynameprofile", "").apply();
+
+            context.startActivity(i);
+        });
+
+        if (videoview != null) {
+            videoview.setVisibility(GONE);
+            if (imagepath.contains(".mp4")) {
+
+                videoview.setVisibility(View.VISIBLE);
+
+                mainadsimg.setVisibility(GONE);
+
+                try {
+                    BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
+                    TrackSelector trackSelector = new DefaultTrackSelector(new AdaptiveTrackSelection.Factory(bandwidthMeter));
+                    player = ExoPlayerFactory.newSimpleInstance(context, trackSelector);
+                    Uri videoUri = Uri.parse(imagepath);
+                    DefaultHttpDataSourceFactory dataSourceFactory = new DefaultHttpDataSourceFactory("wallpo_player");
+                    ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
+                    MediaSource mediaSource = new ExtractorMediaSource(videoUri, dataSourceFactory, extractorsFactory, null, null);
+                    videoview.setPlayer(player);
+                    if (type.equals("profileshow"))
+                        videoview.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_ZOOM);
+                    player.prepare(mediaSource);
+                    player.setPlayWhenReady(true);
+                    player.getPlaybackState();
+
+                } catch (Exception e) {
+                    Log.e(ContentValues.TAG, "onCreate: ", e);
+                }
+
+                dialog.setOnDismissListener(dialogInterface -> {
+                    player.setPlayWhenReady(false);
+                    player.getPlaybackState();
+                });
+            }
+        }
+        if (!oneheadline1.isEmpty()) {
+            onetext.setText(oneheadline1);
+        }
+        if (!oneheadline2.isEmpty()) {
+            adsdesc.setText(oneheadline2);
+        }
+        if (!visit.isEmpty()) {
+            redirectbtn.setText(visit);
+        }
+
+        try {
+            Glide.with(context).load(imagepath).centerCrop()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .skipMemoryCache(false).into(mainadsimg);
+
+        } catch (IllegalArgumentException e) {
+            Log.e("searchadapter", "onBindViewHolder: ", e);
+        } catch (IllegalStateException e) {
+
+            Log.e("act", "onBindViewHolder: ", e);
+        }
+
+        if (link.isEmpty()) {
+            adsbottomimg.setVisibility(GONE);
+        }
+
+        try {
+            JSONArray array = new JSONArray(userinfo);
+
+            for (int i = 0; i < array.length(); i++) {
+
+                JSONObject object = array.getJSONObject(i);
+
+                String usernametxt = object.getString("username").trim();
+                String displaynametxt = object.getString("displayname").trim();
+                String profilephoto = object.getString("profilephoto").trim();
+
+                String verified = object.getString("verified").trim();
+                String subscribers = object.getString("subscribers").trim();
+
+                displayname.setText(displaynametxt);
+
+                username.setText("@ " + usernametxt);
+
+                try {
+                    Glide.with(context).load(profilephoto).centerInside()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .skipMemoryCache(false).into(profilepic);
+
+                } catch (IllegalArgumentException e) {
+                    Log.e("searchadapter", "onBindViewHolder: ", e);
+                } catch (IllegalStateException e) {
+
+                    Log.e("act", "onBindViewHolder: ", e);
+                }
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Glide.with(context).load(sharedPreferences.getString("previewimg", "")).centerCrop()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .skipMemoryCache(false).into(adsbottomimg);
+
+            if (type.equals("infolaytxt")) {
+                AppCompatTextView adstitles = dialog.findViewById(R.id.adstitles);
+                adstitles.setText(sharedPreferences.getString("previewtitle", ""));
+
+            }
+
+        } catch (IllegalArgumentException e) {
+            Log.e("searchadapter", "onBindViewHolder: ", e);
+        } catch (IllegalStateException e) {
+
+            Log.e("act", "onBindViewHolder: ", e);
+        }
+        increaseno(uid, "views");
+        dialog.show();
+    }
+
+
     public static String checkDate(Context context, String firstdate, String secdate) {
         Calendar c = Calendar.getInstance();
 
@@ -2391,7 +2771,8 @@ public class updatecode {
 
         int year = Integer.parseInt(secdate.substring(0, 4));
         int month = Integer.parseInt(secdate.substring(5, 7).replace(" ", ""));
-        int dayOfMonth = Integer.parseInt(secdate.substring(8, 10).replace(" ", ""));;
+        int dayOfMonth = Integer.parseInt(secdate.substring(8, 10).replace(" ", ""));
+        ;
 
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month);

@@ -338,24 +338,13 @@ public class ViewPostsActivity extends AppCompatActivity {
                     .addListener(new RequestListener<Drawable>() {
                         @Override
                         public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(context, getResources().getString(R.string.errorloadingimage), Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                            runOnUiThread(() -> Toast.makeText(context, getResources().getString(R.string.errorloadingimage), Toast.LENGTH_SHORT).show());
                             return false;
                         }
 
                         @Override
                         public boolean onResourceReady(final Drawable resource, Object model, final Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    imageView1.setImageDrawable(resource);
-
-                                }
-                            });
+                            runOnUiThread(() -> imageView1.setImageDrawable(resource));
                             return false;
                         }
                     }).into(imagview);
@@ -908,13 +897,10 @@ public class ViewPostsActivity extends AppCompatActivity {
 
 
             edit.setVisibility(View.VISIBLE);
-            edit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //editview
-                    updatecode.editposts(context, Integer.parseInt(photoid));
+            edit.setOnClickListener(v -> {
+                //editview
+                updatecode.editposts(context, Integer.parseInt(photoid));
 
-                }
             });
 
 

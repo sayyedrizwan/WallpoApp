@@ -165,15 +165,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-        /*
-        Document doc = Jsoup.connect("http://www.example.com").get();
-        String keywords = doc.select("meta[name=keywords]").first().attr("content");
-        System.out.println("Meta keyword : " + keywords);
-        String description = doc.select("meta[name=description]").get(0).attr("content");
-        System.out.println("Meta description : " + description);*/
-
         SharedPreferences sharedPreferencess = context.getSharedPreferences("wallpoonetime", Context.MODE_PRIVATE);
 
         if(sharedPreferencess.getBoolean("wallpotutorials", true)){

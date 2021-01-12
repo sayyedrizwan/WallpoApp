@@ -36,4 +36,5 @@
     <color name="trimmers">#9AD8D8D8</color>
     <color name="peach">#fef8fa</color>
     <color name="transparent">#0CFF0055</color>
+    <color name="bgwhite">#DDDDDD</color>
 </resources>
