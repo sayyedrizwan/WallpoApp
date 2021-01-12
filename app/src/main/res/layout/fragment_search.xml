@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".fragment.SearchFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/black">
+
+            <LinearLayout
+                android:id="@+id/mainlay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/searchtext"
+                    android:imeOptions="actionSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:layout_weight="9"
+                    android:background="@drawable/roundsearch"
+                    android:hint="@string/search."
+                    android:inputType="text"
+                    android:lineHeight="1dp"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:minEms="1"
+                    android:padding="14dp"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/white"
+                    android:textColorLink="@android:color/white" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/searchbar"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_search"
+                    app:cardBackgroundColor="@color/cardsignup"
+                    app:cardCornerRadius="8dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_search" />
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/idrel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mainlay">
+
+                <com.github.ybq.android.spinkit.SpinKitView
+                    android:id="@+id/idloading"
+                    style="@style/SpinKitView.Large.FoldingCube"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    app:SpinKit_Color="@color/signup" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerviewids"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/nouserfoundtxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/segoeui"
+                    android:padding="40dp"
+                    android:text="@string/nouserfound"
+                    android:textColor="@android:color/white" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/postslay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/idrel">
+
+                <TextView
+                    android:id="@+id/poststexts"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text="@string/posts"
+                    android:textColor="@android:color/white" />
+
+
+                <com.github.ybq.android.spinkit.SpinKitView
+                    android:id="@+id/postsloading"
+                    style="@style/SpinKitView.Large.FoldingCube"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/poststexts"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    app:SpinKit_Color="@color/signup" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerviewposts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/poststexts" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/nopoststxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/segoeui"
+                    android:padding="40dp"
+                    android:text="@string/noposts"
+                    android:textColor="@android:color/white" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/storieslay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/postslay">
+
+                <TextView
+                    android:id="@+id/storiestexts"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text="@string/firewall"
+                    android:textColor="@android:color/white" />
+
+
+                <com.github.ybq.android.spinkit.SpinKitView
+                    android:id="@+id/storiesloading"
+                    style="@style/SpinKitView.Large.FoldingCube"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/storiestexts"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    app:SpinKit_Color="@color/signup" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerviewstories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/storiestexts" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/nostoriestxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/segoeui"
+                    android:padding="40dp"
+                    android:text="@string/nostoriesfound"
+                    android:textColor="@android:color/white" />
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</FrameLayout>

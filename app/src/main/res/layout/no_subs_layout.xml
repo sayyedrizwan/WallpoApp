@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainlayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layoutofview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview"
+            android:layout_width="290dp"
+            android:layout_height="500dp"
+            android:layout_margin="9dp"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="18dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/blackexplore">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.1"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/logo" />
+
+
+                <RelativeLayout
+                    android:id="@+id/idlay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/mainsearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:id="@+id/maintext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="11dp"
+                        android:fontFamily="@font/segoeui"
+                        android:gravity="center"
+                        android:text="@string/thereisstoriesforeveryone"
+                        android:textColor="@android:color/white" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/redirecttoexplore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/maintext"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginEnd="28dp"
+                        android:layout_marginRight="28dp"
+                        app:cardCornerRadius="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_centerVertical="true"
+                                android:layout_margin="10dp"
+                                android:layout_toStartOf="@+id/googletext1"
+                                android:layout_toLeftOf="@+id/googletext1"
+                                android:src="@mipmap/logo"
+                                android:transitionName="googlelogo" />
+
+                            <TextView
+                                android:id="@+id/googletext1"
+                                style="@style/TextAppearance.AppCompat.Small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_margin="10dp"
+                                android:fontFamily="sans-serif"
+                                android:text="@string/exploremore"
+                                android:textColor="@android:color/black"
+                                android:textStyle="bold" />
+
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginRight="15dp"
+                                android:rotation="180"
+                                android:src="@drawable/ic_left_arrow" />
+
+
+                            <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                style="@style/SpinKitView.Wave"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                android:visibility="invisible"
+                                app:SpinKit_Color="@android:color/black" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/searchmore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/redirecttoexplore"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginEnd="28dp"
+                        android:layout_marginRight="28dp"
+                        app:cardCornerRadius="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_centerVertical="true"
+                                android:layout_margin="10dp"
+                                android:layout_toStartOf="@+id/googletext"
+                                android:layout_toLeftOf="@+id/googletext"
+                                android:src="@mipmap/logo"
+                                android:transitionName="googlelogo" />
+
+                            <TextView
+                                android:id="@+id/googletext"
+                                style="@style/TextAppearance.AppCompat.Small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_margin="10dp"
+                                android:fontFamily="sans-serif"
+                                android:text="@string/searchmore"
+                                android:textColor="@android:color/black"
+                                android:textStyle="bold" />
+
+
+                            <ImageView
+                                android:id="@+id/googlearrow"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginRight="15dp"
+                                android:rotation="180"
+                                android:src="@drawable/ic_left_arrow" />
+
+
+                            <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                android:id="@+id/googleloadding"
+                                style="@style/SpinKitView.Wave"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                android:visibility="invisible"
+                                app:SpinKit_Color="@android:color/black" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/searchmore"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="48dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="9dp"
+                        android:fontFamily="@font/lovelo"
+                        android:text="@string/keepswiping"
+                        android:textColor="@android:color/white" />
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:id="@+id/relllay"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cardview"
+            android:layout_marginStart="9dp"
+            android:layout_marginLeft="9dp"
+            android:background="@color/cardsignup"
+            android:paddingTop="0dp"
+            android:translationY="-43dp">
+
+            <TextView
+                android:id="@+id/bottomtext"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="9dp"
+                android:fontFamily="@font/lovelo"
+                android:text="@string/justforyou"
+                android:textColor="@android:color/white" />
+
+
+        </RelativeLayout>
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:layout_toRightOf="@+id/relllay"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/loadingbar"
+            android:layout_margin="5dp"
+            style="@style/SpinKitView.Large.Wave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            app:SpinKit_Color="@color/signup" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

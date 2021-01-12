@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activity.AlbumsActivity"
+    tools:showIn="@layout/activity_albums">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/titleablum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:fontFamily="@font/lovelo"
+            android:text="@string/albumsposts"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/trendingloading"
+            style="@style/SpinKitView.Large.Wave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/signup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleablum" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:id="@+id/recyclerview"
+            app:layout_constraintTop_toBottomOf="@+id/titleablum"
+            android:layout_height="match_parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/abouttitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:fontFamily="@font/lovelo"
+            android:text="@string/aboutbig"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/recyclerview"/>
+
+        <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:id="@+id/abouttext"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/worlsans"
+            app:layout_constraintTop_toBottomOf="@id/abouttitle"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text=""/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".extra.WallpaperSettingActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/roundwallpapersetting">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/helvetica"
+                android:text="@string/wallpapersettertype"
+                android:textColor="@android:color/white" />
+
+            <LinearLayout
+                android:id="@+id/toplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:layout_margin="5dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <RelativeLayout
+                    android:id="@+id/defualtset"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="5"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <RelativeLayout
+                        android:id="@+id/defualtlay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/roundwallpapersetting">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/defualt_wallpaper_setter"
+                            android:translationX="-10dp" />
+
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/defualt"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/defualtlay"
+                        android:buttonTint="@android:color/white"
+                        android:text="@string/defualt"
+                        android:textColor="@android:color/white" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/defualt"
+                        android:layout_margin="2dp"
+                        android:fontFamily="@font/segoeui"
+                        android:text="@string/wallpapersetter1"
+                        android:textColor="@android:color/white" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/fitset"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="5"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <RelativeLayout
+                        android:id="@+id/fitlay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/roundwallpapersetting">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/fitscreen_wallpaper_setter"
+                            android:translationX="-10dp" />
+
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/fit"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/fitlay"
+                        android:buttonTint="@android:color/white"
+                        android:text="@string/fit"
+                        android:textColor="@android:color/white" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/fit"
+                        android:layout_margin="2dp"
+                        android:fontFamily="@font/segoeui"
+                        android:text="@string/wallpapersetter2"
+                        android:textColor="@android:color/white" />
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/middlelay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toplay"
+                android:layout_margin="5dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <RelativeLayout
+                    android:id="@+id/cropset"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="5"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <RelativeLayout
+                        android:id="@+id/croplay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/roundwallpapersetting">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/crop_wallpaper_setter"
+                            android:translationX="-10dp" />
+
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/crop"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/croplay"
+                        android:buttonTint="@android:color/white"
+                        android:text="@string/crop"
+                        android:textColor="@android:color/white" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/crop"
+                        android:layout_margin="2dp"
+                        android:fontFamily="@font/segoeui"
+                        android:text="@string/wallpapersetter3"
+                        android:textColor="@android:color/white" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/optionsset"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="5"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <RelativeLayout
+                        android:id="@+id/optionslay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/roundwallpapersetting">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/options_wallpaper_setter"
+                            android:translationX="-10dp" />
+
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/options"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/optionslay"
+                        android:buttonTint="@android:color/white"
+                        android:text="@string/options"
+                        android:textColor="@android:color/white" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/options"
+                        android:layout_margin="2dp"
+                        android:fontFamily="@font/segoeui"
+                        android:text="@string/wallpapersetter4"
+                        android:textColor="@android:color/white" />
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/videolay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/middlelay"
+                android:layout_margin="12dp"
+                android:padding="8dp"
+                android:background="@drawable/roundwallpapersetting"
+                android:foreground="?android:attr/selectableItemBackground">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:id="@+id/powersavingtxt"
+                    android:layout_toLeftOf="@+id/switchsave"
+                    android:fontFamily="@font/helvetica"
+                    android:text="@string/videopowersavingoff"
+                    android:textColor="@android:color/white"
+                    android:layout_toStartOf="@+id/switchsave" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchsave"
+                    android:layout_centerVertical="true"
+                    android:checked="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/white"
+                    android:buttonTint="@android:color/white"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/savebtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/videolay"
+                android:layout_margin="20dp"
+                android:background="@drawable/roundwallpapersetting"
+                android:foreground="?android:attr/selectableItemBackground">
+
+
+                <com.github.ybq.android.spinkit.SpinKitView
+                    android:id="@+id/loadingbar"
+                    style="@style/SpinKitView.FadingCircle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="4dp"
+                    app:SpinKit_Color="@color/colorAccent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/savetxt"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/lovelo"
+                    android:padding="15dp"
+                    android:text="@string/savebig"
+                    android:textColor="@android:color/white" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

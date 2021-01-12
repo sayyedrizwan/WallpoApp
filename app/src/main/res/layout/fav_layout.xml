@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="290dp"
+        android:layout_height="500dp"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="18dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/roundborderfav"
+                android:visibility="gone">
+
+                <com.varunest.sparkbutton.SparkButton
+                    android:id="@+id/favbutton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:translationX="5dp"
+                    android:translationY="-3dp"
+                    app:sparkbutton_activeImage="@drawable/un_fav"
+                    app:sparkbutton_iconSize="30dp"
+                    app:sparkbutton_inActiveImage="@drawable/fav_heart"
+                    app:sparkbutton_primaryColor="@color/signup"
+                    app:sparkbutton_secondaryColor="@color/white" />
+
+                <ImageView
+                    android:id="@+id/playbtn"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_play_video" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

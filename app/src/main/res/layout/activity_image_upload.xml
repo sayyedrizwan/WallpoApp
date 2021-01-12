@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".uploads.UploadImageActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/back"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="3dp"
+                    android:src="@drawable/ic_left_arrow" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_toEndOf="@+id/back"
+                android:layout_toRightOf="@+id/back"
+                android:fontFamily="@font/lovelo"
+                android:text="@string/uploadpost"
+                android:textColor="@android:color/white" />
+
+            <ImageView
+                android:id="@+id/imagepath"
+                android:layout_width="match_parent"
+                android:layout_height="550dp"
+                android:layout_below="@+id/back"
+                android:scaleType="fitCenter" />
+
+            <com.github.florent37.shapeofview.shapes.CircleView
+                android:id="@+id/circle"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/imagepath"
+                android:layout_margin="5dp"
+                app:shape_circle_borderColor="@color/cardsignup"
+                app:shape_circle_borderWidth="2dp">
+
+                <ImageView
+                    android:id="@+id/profilepic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/logo_round" />
+
+            </com.github.florent37.shapeofview.shapes.CircleView>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/captions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/circle"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/roundstatusedittext"
+                android:hint="@string/entercaption"
+                android:inputType="textMultiLine"
+                android:maxLength="160"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/no"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/captions"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/segoeui"
+                android:text="0 / 160"
+                android:textColor="@android:color/white" />
+
+            <RelativeLayout
+                android:layout_below="@+id/no"
+                android:id="@+id/taglocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:background="@drawable/mapbackground"
+                    android:layout_width="match_parent"
+                    android:scaleType="centerCrop"
+                    android:alpha="0.6"
+                    android:layout_height="120dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_centerInParent="true"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold"
+                    android:id="@+id/locationtxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:fontFamily="@font/segoeui"
+                    android:text="@string/taglocation"
+                    android:textColor="@android:color/white" />
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/categorytitle"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/taglocation"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/segoeui"
+                android:text="@string/selectcategory"
+                android:textColor="@android:color/white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categoryview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/categorytitle" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/albumtitle"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/categoryview"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/segoeui"
+                android:text="@string/youralbum"
+                android:textColor="@android:color/white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/albumview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/albumtitle" />
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/link"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/albumview"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/roundstatuslink"
+                android:fontFamily="@font/segoeui"
+                android:hint="@string/linkshare"
+                android:inputType="text"
+                android:maxLength="160"
+                android:padding="15dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/addtags"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/link"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/segoeui"
+                android:text="@string/addtags"
+                android:textColor="@android:color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lastcopy"
+                android:layout_alignParentRight="true"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/link"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/segoeui"
+                android:text="@string/copyseos"
+                android:textColor="@color/storycardgrey"
+                android:layout_alignParentEnd="true" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/seo"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/addtags"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/roundstatusedittext"
+                android:fontFamily="@font/segoeui"
+                android:hint="@string/seotags"
+                android:inputType="textMultiLine"
+                android:maxLength="3000"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white" />
+
+            <Button
+                android:id="@+id/uploadbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/seo"
+                android:layout_margin="10dp"
+                android:background="@drawable/roundsearch"
+                android:fontFamily="@font/lovelo"
+                android:padding="5dp"
+                android:text="@string/uploadbig"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mute"
+        android:title="@string/mutenotification" />
+    <item
+        android:id="@+id/clearchat"
+        android:title="@string/clearchat" />
+
+    <item
+        android:id="@+id/makeshortcut"
+        android:title="@string/makeshortcut" />
+
+</menu>

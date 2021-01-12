@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainlayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layoutofview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview"
+            android:layout_width="290dp"
+            android:layout_height="500dp"
+            android:layout_margin="9dp"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="18dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/background">
+
+                    <ImageView
+                        android:id="@+id/imageViewbg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:alpha="0.4"
+                        android:scaleType="centerCrop" />
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter" />
+
+                <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+                    android:id="@+id/videoview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    app:controller_layout_id="@layout/custom_playback_control"
+                    app:show_buffering="always"
+                    app:show_shuffle_button="true" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/segoeui"
+                    android:text="0s"
+                    android:textColor="@android:color/white" />
+
+                <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/bufferingbar"
+                    style="@style/SpinKitView.Large.Circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    app:SpinKit_Color="@color/signup" />
+
+                <ImageView
+                    android:id="@+id/playbtn"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_play_video" />
+
+                <RelativeLayout
+                    android:id="@+id/mainbackhide"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/backgroundsec" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/profilecard"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginEnd="9dp"
+                    android:layout_marginRight="9dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="8dp">
+
+                    <ImageView
+                        android:id="@+id/profilepic"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/profilepic" />
+
+                </androidx.cardview.widget.CardView>
+
+
+                <TextView
+                    android:id="@+id/dislayname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_toStartOf="@+id/favlay"
+                    android:layout_toLeftOf="@+id/favlay"
+                    android:layout_toEndOf="@id/profilecard"
+                    android:layout_toRightOf="@id/profilecard"
+                    android:fontFamily="@font/worlsans"
+                    android:text=" "
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dislayname"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toStartOf="@+id/favlay"
+                    android:layout_toLeftOf="@+id/favlay"
+                    android:layout_toEndOf="@id/profilecard"
+                    android:layout_toRightOf="@id/profilecard"
+                    android:fontFamily="@font/worlsans"
+                    android:text=" "
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+
+                <RelativeLayout
+                    android:id="@+id/favlay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/roundborderfav">
+
+                    <com.varunest.sparkbutton.SparkButton
+                        android:id="@+id/favbutton"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:translationX="5dp"
+                        android:translationY="-3dp"
+                        app:sparkbutton_activeImage="@drawable/fav_heart"
+                        app:sparkbutton_iconSize="30dp"
+                        app:sparkbutton_inActiveImage="@drawable/un_fav"
+                        app:sparkbutton_primaryColor="@color/signup"
+                        app:sparkbutton_secondaryColor="@color/white" />
+
+                </RelativeLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/likelay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="47dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="9dp"
+                    app:cardBackgroundColor="@color/black"
+                    app:cardCornerRadius="14dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.varunest.sparkbutton.SparkButton
+                            android:id="@+id/likebutton"
+                            android:layout_width="47dp"
+                            android:layout_height="47dp"
+                            app:sparkbutton_activeImage="@drawable/ic_liked"
+                            app:sparkbutton_iconSize="22dp"
+                            app:sparkbutton_inActiveImage="@drawable/ic_like"
+                            app:sparkbutton_primaryColor="@color/colorPrimary"
+                            app:sparkbutton_secondaryColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/likeno"
+                            style="@style/TextAppearance.AppCompat.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_toEndOf="@id/likebutton"
+                            android:layout_toRightOf="@id/likebutton"
+                            android:fontFamily="@font/worlsans"
+                            android:text="17k"
+                            android:textColor="@android:color/white" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/comment"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_above="@+id/likelay"
+                    android:layout_margin="9dp"
+                    app:cardBackgroundColor="@color/black"
+                    app:cardCornerRadius="14dp">
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/ic_comment" />
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/wallpaperset"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_above="@+id/comment"
+                    android:layout_margin="9dp"
+                    app:cardBackgroundColor="@color/black"
+                    app:cardCornerRadius="14dp">
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_wallpaper_" />
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/wallpaperlockset"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_above="@+id/wallpaperset"
+                    android:layout_margin="9dp"
+                    app:cardBackgroundColor="@color/black"
+                    app:cardCornerRadius="14dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="6dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_wallpaper_lock" />
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/share"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_above="@+id/wallpaperlockset"
+                    android:layout_margin="9dp"
+                    app:cardBackgroundColor="@color/black"
+                    app:cardCornerRadius="14dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="9dp"
+                        android:src="@drawable/ic_share_white" />
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/menu"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="9dp"
+                    app:cardBackgroundColor="@color/black"
+                    app:cardCornerRadius="14dp">
+
+                    <ImageView
+                        android:id="@+id/menuimg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="9dp"
+                        android:src="@drawable/ic_menu_home" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/edit"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_above="@+id/link"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="9dp"
+                    app:cardBackgroundColor="@color/black"
+                    app:cardCornerRadius="14dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="9dp"
+                        android:src="@drawable/ic_edit_white" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/delete"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_above="@+id/edit"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="9dp"
+                    app:cardBackgroundColor="@color/black"
+                    app:cardCornerRadius="14dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="9dp"
+                        android:src="@drawable/ic_delete" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/link"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_above="@+id/menu"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="9dp"
+                    app:cardBackgroundColor="@color/black"
+                    app:cardCornerRadius="14dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="9dp"
+                        android:src="@drawable/ic_chrome" />
+
+                </androidx.cardview.widget.CardView>
+
+
+                <TextView
+                    android:id="@+id/caption"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/wallpaperlockset"
+                    android:layout_margin="5dp"
+                    android:layout_toEndOf="@id/share"
+                    android:layout_toRightOf="@id/share"
+                    android:fontFamily="@font/segoeui"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@android:color/white" />
+
+                <com.github.ybq.android.spinkit.SpinKitView
+                    android:id="@+id/loadingwallpaperbar"
+                    style="@style/SpinKitView.Large.FadingCircle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    app:SpinKit_Color="@color/colorAccent" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:id="@+id/relllay"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cardview"
+            android:layout_marginStart="9dp"
+            android:layout_marginLeft="9dp"
+            android:background="@color/cardsignup"
+            android:paddingTop="0dp"
+            android:translationY="-43dp">
+
+            <TextView
+                android:id="@+id/premiumuser"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="9dp"
+                android:fontFamily="@font/lovelo"
+                android:text="@string/premiumads"
+                android:textColor="@android:color/white" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/trendingno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relllay"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:fontFamily="@font/worlsans"
+            android:text="@string/ontrending"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:translationY="-30dp" />
+
+
+    </RelativeLayout>
+
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/progressbar"
+        style="@style/SpinKitView.Large.FadingCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_toEndOf="@+id/layoutofview"
+        android:layout_toRightOf="@+id/layoutofview"
+        app:SpinKit_Color="@color/signup" />
+
+</RelativeLayout>

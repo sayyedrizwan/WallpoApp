@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainlay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:orientation="vertical">
+
+    <com.github.florent37.shapeofview.shapes.CircleView
+        android:id="@+id/circleview"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="5dp"
+        app:shape_circle_borderColor="@android:color/black"
+        app:shape_circle_borderWidth="1dp">
+
+        <ImageView
+            android:id="@+id/profilepic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/profilepic" />
+
+    </com.github.florent37.shapeofview.shapes.CircleView>
+
+    <ImageView
+        android:id="@+id/menu"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/circleview"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:rotation="90"
+        android:src="@drawable/ic_menu" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/commentcard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_toEndOf="@+id/circleview"
+        android:layout_toRightOf="@+id/circleview"
+        app:cardCornerRadius="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="9dp"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="9dp"
+                android:fontFamily="@font/lovelo"
+                android:text="  "
+                android:textColor="@android:color/black" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="9dp"
+                android:fontFamily="@font/segoeui"
+                android:text="2d"
+                android:textColor="@color/backgroundsec" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:layout_margin="12dp"
+                android:fontFamily="@font/segoeui"
+                android:text=" "
+                android:textColor="@android:color/black" />
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/progressbar"
+        style="@style/SpinKitView.Large.FadingCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/commentcard"
+        android:layout_centerHorizontal="true"
+        app:SpinKit_Color="@color/signup" />
+
+</RelativeLayout>

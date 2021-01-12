@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainlay"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/black">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:fontFamily="@font/lovelo"
+            android:text="@string/twostepauthbig"
+            android:textColor="@android:color/white" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_below="@+id/text"
+            android:fontFamily="@font/helvetica"
+            android:text="notice"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/white" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sharetext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/note"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:background="@drawable/roundprofilebutton"
+            android:fontFamily="@font/segoeui"
+            android:hint="@string/entercode"
+            android:inputType="number"
+            android:padding="14dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white" />
+
+
+        <Button
+            android:id="@+id/done"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sharetext"
+            android:layout_margin="8dp"
+            android:background="@drawable/roundprofilebutton"
+            android:fontFamily="@font/helvetica"
+            android:text="@string/verify"
+            android:textColor="@android:color/white" />
+
+        <LinearLayout
+            android:id="@+id/linearlay"
+            android:layout_below="@id/done"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/time"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/lovelo"
+                android:text="@string/seconds"
+                android:textColor="@android:color/white" />
+
+             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/resend"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/lovelo"
+                android:text="@string/resendcodebig"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearlay"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="8dp"
+            android:padding="15dp"
+            android:background="@drawable/roundprofilebutton"
+            android:fontFamily="@font/helvetica"
+            android:text="@string/cancelbig"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/loadingbar"
+        style="@style/SpinKitView.Circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        app:SpinKit_Color="@color/signup" />
+
+</RelativeLayout>

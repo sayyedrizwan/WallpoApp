@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3C3C3C">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/topimagebar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_back"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="16dp"
+                app:srcCompat="@drawable/ic_arrow_back_black_24dp"
+                app:tint="@android:color/white" />
+        </RelativeLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.wallpo.android.cropper.CropImageView
+        android:id="@+id/cropImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/footer"
+        android:layout_below="@id/appBarLayout" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:paddingTop="16dp">
+
+        <ImageView
+            android:id="@+id/iv_flip_vertical"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="16dp"
+            android:rotation="90"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_flip_horizontal"
+            app:layout_constraintStart_toEndOf="@+id/iv_flip_horizontal"
+            app:layout_constraintTop_toTopOf="@+id/iv_flip_horizontal"
+            app:srcCompat="@drawable/ic_flip_black_24dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_crop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:src="@drawable/ic_done_black_24dp"
+            app:backgroundTint="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/iv_rotate_right"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/fab_crop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/fab_crop"
+            app:srcCompat="@drawable/ic_rotate_right_black_24dp" />
+
+        <ImageView
+            android:id="@+id/iv_flip_horizontal"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/fab_crop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/fab_crop"
+            app:srcCompat="@drawable/ic_flip_black_24dp" />
+
+        <ImageView
+            android:id="@+id/iv_rotate_left"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_rotate_right"
+            app:layout_constraintEnd_toStartOf="@+id/iv_rotate_right"
+            app:layout_constraintTop_toTopOf="@+id/iv_rotate_right"
+            app:srcCompat="@drawable/ic_rotate_left_black_24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

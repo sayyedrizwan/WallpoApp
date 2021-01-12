@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/custom_marker_view"
+    android:layout_width="wrap_content"
+    android:padding="4dp"
+    android:background="@android:color/transparent"
+    android:layout_height="wrap_content">
+
+    <com.github.florent37.shapeofview.shapes.BubbleView
+        android:layout_width="58dp"
+        android:layout_height="65dp"
+        app:shape_circle_borderWidth="2dp"
+        app:shape_bubble_arrowHeight="10dp"
+        android:background="@android:color/transparent"
+        app:shape_bubble_arrowWidth="10dp"
+        app:shape_bubble_arrowPosition="bottom"
+        app:shape_bubble_borderRadius="20dp"
+        app:arrow_posititon_percent="0.5">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:id="@+id/imageview"
+            android:src="@mipmap/profilepic"/>
+
+    </com.github.florent37.shapeofview.shapes.BubbleView>
+
+</RelativeLayout>

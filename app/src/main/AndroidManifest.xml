@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.wallpo.android">
+
+    <uses-sdk tools:overrideLibrary="com.bachors.wordtospan" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER_HINTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission
+        android:name="android.permission.CLEAR_APP_CACHE"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        android:allowBackup="true"
+        android:forceDarkAllowed="true"
+        android:grantUriPermissions="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/logo_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        android:windowSoftInputMode="adjustPan"
+        tools:ignore="UnusedAttribute">
+        <activity android:name=".utils.WallpaperWebActivity"></activity>
+        <activity android:name=".maps.UploadMapActivity" />
+        <activity android:name=".subscription.PremiumActivity" />
+        <activity android:name=".subscription.PremiumActivity1" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".extra.LanguageActivity" />
+        <activity
+            android:name=".extra.DeepLinkActivity"
+            android:label="@string/app_name">
+            <intent-filter android:label="@string/app_name">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="thewallpo.com"
+                    android:pathPrefix="/"
+                    android:scheme="https" />
+                <data
+                    android:host="thewallpo.com"
+                    android:pathPrefix="/"
+                    android:scheme="http" />
+                <data
+                    android:host="www.thewallpo.com"
+                    android:pathPrefix="/"
+                    android:scheme="https" />
+                <data
+                    android:host="www.thewallpo.com"
+                    android:pathPrefix="/"
+                    android:scheme="http" />
+                <data
+                    android:host="wallpo.com"
+                    android:pathPrefix="/"
+                    android:scheme="https" />
+                <data
+                    android:host="wallpo.com"
+                    android:pathPrefix="/"
+                    android:scheme="http" />
+                <data
+                    android:host="www.wallpo.com"
+                    android:pathPrefix="/"
+                    android:scheme="https" />
+                <data
+                    android:host="www.wallpo.com"
+                    android:pathPrefix="/"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-2941808068005217~6883147945" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCS--D9UEQ-yzvgL4V-ACxn2vWpRVKNDv8" />
+
+        <activity android:name=".extra.WallpaperSettingActivity" />
+        <activity android:name=".explorefragment.ViewCategoryActivity" />
+        <activity android:name=".activity.SubscribeAcivity" />
+        <activity
+            android:name=".uploads.UploadImageActivity"
+            android:configChanges="orientation|screenSize"
+            android:icon="@drawable/logo"
+            android:label="Posts">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.UsedActivity" />
+        <activity android:name=".activity.LikedPostsActivity" />
+        <activity android:name=".activity.MessageActivity" />
+        <activity android:name=".activity.ChatActivity" />
+
+        <receiver
+            android:name=".service.NotificationReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="RESTART_SERVICE" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".service.StartForeService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".service.ChatMessageService"
+            android:enabled="true" />
+
+        <activity
+            android:name=".uploads.VideoTrimmerActivity"
+            android:icon="@drawable/logo"
+            android:label="Fire Wall"
+            android:windowSoftInputMode="adjustResize|stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="video/*" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".uploads.VideoTrimmerUploadActivity"
+            android:icon="@drawable/logo"
+            android:label="Posts"
+            android:windowSoftInputMode="adjustResize|stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="video/*" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.MultipleAccountsActivity" />
+        <activity android:name=".activity.StoriesCommentActivity" />
+        <activity android:name=".activity.CommentActivity" />
+        <activity
+            android:name=".activity.AlbumsActivity"
+            android:label="@string/title_activity_albums"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".profile.ProfileActivity" />
+        <activity android:name=".activity.EditProfileActivity" />
+        <activity android:name=".activity.HashtagActivity" />
+        <activity
+            android:name=".uploads.VideostatusActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activity.TwoAuthActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".uploads.ImagestatusActivity"
+            android:icon="@drawable/logo"
+            android:label="Fire Wall"
+            android:windowSoftInputMode="adjustResize|stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".uploads.StatusActivity"
+            android:icon="@drawable/logo"
+            android:label="Fire Wall"
+            android:windowSoftInputMode="adjustResize|stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.WallpaperSetActivity" />
+        <activity android:name=".uploads.UploadVideoActivity" />
+        <activity android:name=".activity.ViewPostsActivity" />
+        <activity android:name=".activity.FavouriteActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".cropper.CropImageActivity" />
+
+        <service
+            android:name=".service.FCMservice"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".service.StartJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="@string/fb_login_protocol_scheme"
+                    tools:ignore="ManifestResource" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".utils.VideoWallpaperService"
+            android:label="Set wallpo live wallpaper"
+            android:permission="android.permission.BIND_WALLPAPER">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/wallpaper" />
+        </service>
+
+        <meta-data
+            android:name="firebase_performance_logcat_enabled"
+            android:value="true" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
+        <service
+            android:name=".utils.VideoWallpaperMuteService"
+            android:label="Set wallpo live wallpaper"
+            android:permission="android.permission.BIND_WALLPAPER">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/wallpaper" />
+        </service>
+
+        <activity
+            android:name=".videoGallery.VideoFolder"
+            android:configChanges="orientation|screenSize" />
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".service.HourlyNotice"
+            android:enabled="true" />
+    </application>
+
+</manifest>

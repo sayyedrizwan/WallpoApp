@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".activity.ChatActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="35dp"
+        android:id="@+id/back"
+        android:layout_height="48dp"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp"
+            android:src="@drawable/ic_left_arrow" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <ImageView
+        android:id="@+id/notificationmenu"
+        android:translationY="-10dp"
+        android:translationX="5dp"
+        android:layout_below="@+id/back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:rotation="90"
+        android:src="@drawable/ic_menu"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="70dp"
+        app:cardCornerRadius="8dp"
+        android:id="@+id/cardview"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/profileimg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/profilepic"/>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/displayname"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/lovelo"
+        android:text="-"
+        android:layout_marginTop="20dp"
+        android:textColor="@android:color/white"
+        android:layout_toLeftOf="@id/cardview"
+        android:layout_toStartOf="@id/cardview" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/username"
+        android:layout_below="@id/displayname"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:layout_toLeftOf="@id/cardview"
+        android:layout_toStartOf="@id/cardview"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:fontFamily="@font/segoeui"
+        android:text="-"
+        android:textColor="@android:color/white"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="5dp"
+        android:layout_above="@+id/seenlayout"
+        android:layout_below="@+id/cardview"
+        android:layout_height="match_parent" />
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/chatloading"
+        style="@style/SpinKitView.Small.Circle"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cardview"
+        app:SpinKit_Color="@color/colorAccent" />
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/loadingbar"
+        android:layout_centerInParent="true"
+        style="@style/SpinKitView.Large.Wave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/signup" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:layout_marginBottom="10dp"
+        android:textColor="@android:color/white"
+        android:layout_above="@id/bottomlay"
+        android:text="@string/date"
+        android:layout_toLeftOf="@+id/seenlayout"
+        android:layout_toStartOf="@+id/seenlayout" />
+
+    <com.github.florent37.shapeofview.shapes.CircleView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_above="@id/bottomlay"
+        android:id="@+id/seenlayout"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="5dp"
+        app:shape_circle_borderColor="@color/cardsignup"
+        app:shape_circle_borderWidth="2dp">
+
+        <ImageView
+            android:id="@+id/profileseenimg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/logo_round" />
+
+    </com.github.florent37.shapeofview.shapes.CircleView>
+
+    <RelativeLayout
+        android:id="@+id/acceptbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_below="@+id/cardview"
+        android:background="@drawable/editprofilebutton"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/acceptbig"
+            android:fontFamily="@font/lovelo"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/notice"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/segoeui"
+        android:layout_margin="8dp"
+        android:layout_below="@id/cardview"
+        android:layout_toRightOf="@+id/acceptbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/clickacceptchat"
+        android:layout_toEndOf="@+id/acceptbutton" />
+
+    <LinearLayout
+        android:id="@+id/bottomlay"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/commenttext"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="1dp"
+            android:layout_weight="9"
+            android:background="@drawable/roundsearch"
+            android:hint="@string/typemessage"
+            android:inputType="text"
+            android:lineHeight="1dp"
+            android:lines="1"
+            android:maxLines="1"
+            android:minEms="1"
+            android:padding="14dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textColorLink="@android:color/white" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/sendmessage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_send"
+            app:cardBackgroundColor="@color/cardsignup"
+            app:cardCornerRadius="8dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:src="@drawable/ic_send" />
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        app:cardCornerRadius="10dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardproile"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="10dp">
+
+                <ImageView
+                    android:id="@+id/profilepic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/profilepic" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:id="@+id/displayname"
+                android:layout_toEndOf="@id/cardproile"
+                android:layout_toRightOf="@id/cardproile"
+                android:fontFamily="@font/lovelo"
+                android:text=" - "
+                android:textColor="@android:color/black" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:id="@+id/username"
+                android:layout_below="@+id/displayname"
+                android:layout_toEndOf="@id/cardproile"
+                android:layout_toRightOf="@id/cardproile"
+                android:fontFamily="@font/segoeui"
+                android:text="  "
+                android:textColor="@android:color/black" />
+
+            <RelativeLayout
+                android:id="@+id/profilego"
+                android:layout_alignParentRight="true"
+                android:layout_width="80dp"
+                android:background="@drawable/roundborderfav"
+                android:layout_height="80dp"
+                android:layout_alignParentEnd="true">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:rotation="180"
+                    android:translationX="10dp"
+                    android:translationY="-10dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_left_arrow" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

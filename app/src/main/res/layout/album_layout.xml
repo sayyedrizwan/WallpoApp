@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginBottom="8dp"
+        android:id="@+id/card"
+        android:layout_width="220dp"
+        android:layout_height="315dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="8dp">
+
+        <ImageView
+            android:scaleType="centerCrop"
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.github.florent37.shapeofview.shapes.DiagonalView
+                android:layout_width="80dp"
+                android:layout_height="37dp"
+                android:layout_above="@+id/rellay"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@android:color/black"
+                android:translationY="1dp"
+                app:shape_diagonal_angle="10"
+                app:shape_diagonal_position="left">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/cardsignup">
+
+
+                    <com.github.florent37.shapeofview.shapes.CircleView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerVertical="true"
+                        android:translationX="10dp"
+                        android:layout_toEndOf="@+id/firstimglay"
+                        android:layout_toRightOf="@+id/firstimglay"
+                        app:shape_circle_borderColor="@color/cardsignup"
+                        app:shape_circle_borderWidth="2dp">
+
+                        <ImageView
+                            android:id="@+id/img3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/black" />
+
+                    </com.github.florent37.shapeofview.shapes.CircleView>
+
+
+                    <com.github.florent37.shapeofview.shapes.CircleView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/firstimglay"
+                        android:layout_toRightOf="@+id/firstimglay"
+                        android:translationX="-5dp"
+                        app:shape_circle_borderColor="@color/cardsignup"
+                        app:shape_circle_borderWidth="2dp">
+
+                        <ImageView
+                            android:id="@+id/img2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@mipmap/logo_round" />
+
+                    </com.github.florent37.shapeofview.shapes.CircleView>
+
+                    <com.github.florent37.shapeofview.shapes.CircleView
+                        android:id="@+id/firstimglay"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="13dp"
+                        android:layout_marginLeft="13dp"
+                        app:shape_circle_borderColor="@color/cardsignup"
+                        app:shape_circle_borderWidth="2dp">
+
+                        <ImageView
+                            android:id="@+id/img1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@mipmap/profilepic" />
+
+                    </com.github.florent37.shapeofview.shapes.CircleView>
+
+                </RelativeLayout>
+
+            </com.github.florent37.shapeofview.shapes.DiagonalView>
+
+
+            <RelativeLayout
+                android:id="@+id/rellay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/cardsignup">
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="3dp"
+                    android:fontFamily="@font/segoeui"
+                    android:text=" - "
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/albumname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/username"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/cassannet"
+                    android:text=""
+                    android:textColor="@android:color/white" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

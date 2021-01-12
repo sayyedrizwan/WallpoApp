@@ -1,0 +1,475 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <string name="app_name">Wallpo</string>
+    <string name="subtitle">Des histoires pour tous</string>
+
+    <string name="crop_image_activity_title"></string>
+    <string name="crop_image_menu_rotate_left">Tourner dans le sens antihoraire</string>
+    <string name="crop_image_menu_rotate_right">Tourner</string>
+    <string name="crop_image_menu_crop">Surgir</string>
+    <string name="crop_image_menu_flip">Retourner</string>
+    <string name="crop_image_menu_flip_horizontally">Retourner horizontalement</string>
+    <string name="crop_image_menu_flip_vertically">Retourner verticalement</string>
+
+    <string name="pick_image_intent_chooser_title">Sélectionner la source</string>
+
+    <string name="crop_image_activity_no_permissions">Annulation, les autorisations requises ne sont pas accordées</string>
+    <string name="title_activity_login">Se connecter</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Mot de passe</string>
+    <string name="action_sign_in">Connexion ou Inscription</string>
+    <string name="action_sign_in_short">Se connecter</string>
+    <string name="welcome">" Accueillir ! "</string>
+    <string name="invalid_username">Pas un nom d\'utilisateur valide</string>
+    <string name="invalid_password">Le mot de passe doit contenir plus de 5 caractèress</string>
+    <string name="login_failed">"Échec de la connexion"</string>
+    <string name="play_console_sub_key">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjwSEVRE8R/a61oLgpK1Zh8vqJ+okH9WN2ElbIoBUaknAt/DnQm7U8AyY4pM7FatPsTczJ8FQdpiuQbu1bLOtFygH1i4Hn/N0IGFZQXagIV4pS0efAKQa0MTGKjzd8VCDkhcZg8irIImu88JGFFUh8tEerhMIdatMtwJOXjsedpZhyCLYx8kTM6sSPdrn0ozqjk5NBZuyhhFWRsO0LDSUd5pr+4la458JWhshopBx+Wctm0nG4W+wt1/tAA+YamGnlamlVhYs/rygxZGRvaS25hC2S8D4J1xDKvkKVF2jKop6zbC2DGbfDRQlptvDxnY/x1LpotpAdP1IlggiXgv/RQIDAQAB</string>
+    <string name="facebook_app_id">1853438531420094</string>
+    <string name="fb_login_protocol_scheme">fb1853438531420094</string>
+    <string android:name="com.twitter.sdk.android.CONSUMER_KEY" name="twitterkey">X7BoFWHi1wPb0SKeLzdbaKHhS</string>
+    <string android:name="com.twitter.sdk.android.CONSUMER_SECRET" name="twittersecretkey">rpLzUy2PWJ2GOmB6dvIXLOxqecOOeecnAdhjyZwkRsGAzPKos6</string>
+    <string name="donthaveaccount">Je n\'ai pas de compte, <u>S\'inscrire</u></string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="posts">Des postes</string>
+    <string name="fbnotice">Désolé, identifiant de courriel non disponible, utilisez la connexion google ou wallpo pour continuer.</string>
+    <string name="fbcancel">La demande de connexion Facebook a échoué.</string>
+    <string name="fberror">Erreur lors de la demande de connexion à Facebook.</string>
+    <string name="enteremail">Entrez votre adresse e-mail.</string>
+    <string name="emailnotvaild">L\'identifiant de messagerie n\'est pas valide.</string>
+    <string name="enterpassword">Tapez votre mot de passe.</string>
+    <string name="entername">Entrez votre nom.</string>
+    <string name="entersixchar">Le mot de passe doit contenir plus de 6 caractères.</string>
+    <string name="connectionerror">Erreur de connexion.</string>
+    <string name="autherror">Erreur sur le serveur wallpo.</string>
+    <string name="emailregistered">L\'adresse e-mail est déjà utilisée</string>
+    <string name="registersuccessfully">Enregistré avec succès. S\'il vous plaît, attendez...</string>
+    <string name="emailidpassnotmatched">L\'identifiant de messagerie et le mot de passe que vous avez saisis ne correspondent pas à nos enregistrements. Veuillez vérifier et réessayer.</string>
+    <string name="googlesign">Connectez-vous avec Google</string>
+    <string name="facebooksign">Connectez-vous avec Facebook</string>
+    <string name="defaultsignin">Connexion par défaut</string>
+    <string name="signin">Se connecter</string>
+    <string name="yourname">Votre nom</string>
+    <string name="emailid">Identifiant de courriel</string>
+    <string name="password">Mot de passe</string>
+    <string name="login">S\'IDENTIFIER</string>
+    <string name="loginsmall">s\'identifier</string>
+    <string name="home">Accueil</string>
+    <string name="Home">ACCUEIL</string>
+    <string name="trending">Tendance</string>
+    <string name="Trending">TENDANCE</string>
+    <string name="explore">Explorer</string>
+    <string name="Explore">EXPLORER</string>
+    <string name="notification">Notification</string>
+    <string name="Notification">NOTIFICATION</string>
+    <string name="monetization">Monétisation</string>
+    <string name="Monetization">MONÉTISATION</string>
+    <string name="search">Chercher</string>
+    <string name="search.">Chercher...</string>
+    <string name="Search">CHERCHER</string>
+    <string name="profile">Profil</string>
+    <string name="Profile">PROFIL</string>
+    <string name="editprofile">Editer le profil</string>
+    <string name="upload">Télécharger</string>
+    <string name="favourites">Favoris</string>
+    <string name="messages">Messages</string>
+    <string name="logout">Se-déconnecter</string>
+    <string name="multipleaccounts">Comptes multiples</string>
+    <string name="wallpapersettings">Paramètres de fond d\'écran</string>
+    <string name="suggestionnotification">Notification de suggestion</string>
+    <string name="likedposts">Messages aimés</string>
+    <string name="twofactorauthentication">Authentification à deux facteurs</string>
+    <string name="sharewallpo">Partagez Wallpo</string>
+    <string name="changelanguage">Changer de langue</string>
+    <string name="nopostfav">Vous n\'avez favori aucun article.</string>
+    <string name="autherrortryagain">Erreur d\'authentification, redémarrez l\'application ou réessayez.</string>
+    <string name="limit">EarlySalary propose des prêts entre 1 000 INR et 100 000 INR avec #g de 7 à 50 jours du oiuy #fsvss. prêts entre 1 000 INR et 100,00 INR C\'est donc l\'essentiel que vous essayez i.</string>
+    <string name="premiumads">Premium Sponsor</string>
+    <string name="uppermark">\"</string>
+    <string name="date">date</string>
+    <string name="favouritetopicenotice">Mettez votre sujet préféré pour obtenir une meilleure suggestion à explorer, séparez-le avec, par exemple: - merveille, film, Leo Messi, Titanic, Football Vous pouvez mettre jusqu\'à 5 filtres tag à la fois.</string>
+    <string name="monetize1no">▶  Votre profil doit être rempli, votre profil comprend une photo de profil, une image arrière, un nom d\'affichage, un nom d\'utilisateur, une catégorie, un lien vers des sites Web (facultatif), au moins 20 messages, l\'e-mail doit être vérifié (signifie que vous n\'avez qu\'à cliquer sur le lien envoyer à votre identifiant de courrier électronique d\'enregistrement au moment de l\'inscription ou à tout autre moment.</string>
+    <string name="monetize2no">▶  Vous devez avoir au moins 20 000 abonnés sur vos comptes</string>
+    <string name="monetize3no">▶  Être âgé d\'au moins 18 ans ou avoir un tuteur légal âgé de plus de 18 ans qui peut gérer vos paiements via Wallpo Ads. (Nous pouvons également monétiser votre compte si vous avez moins de 18 ans ou si vous n\'avez pas de tuteur légal, vérifiez avec nous en envoyant un mail à "ads@thewallpo.com"</string>
+    <string name="monetize4no">▶  Votre compte ne sera pas monétisé si vous continuez à publier des photos de nu ou vos messages violents envers ou pour la société. </string>
+    <string name="monetize5no">▶  Votre compte sera annulé ou supprimé immédiatement si vos messages sont violents ou propagent la haine ou sont violents dans la société.</string>
+    <string name="monetize6no">▶  Vous devez respecter tous les termes et conditions ainsi que tous les termes et conditions à venir de Wallpo et Wallpo Ads.</string>
+    <string name="partnerKey">iRFlQ869606a9a79d4e58b75cbf1888bf4fb3</string>
+    <string name="notverifyemail">L\'e-mail n\'est pas vérifié. Veuillez vérifier votre e-mail.</string>
+    <string name="username">\@ sayyedrizwanahmed</string>
+    <string name="postsporfile">\"photoid\":88,</string>
+    <string name="delete">Effacer</string>
+    <string name="viewprofile">Voir le profil</string>
+    <string name="title_activity_albums">ScrollingActivity</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
+        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
+        "flexibility of the material creates new affordances that supercede those in the physical "
+        "world, without breaking the rules of physics.\n"
+        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
+        "interact, and exist in space and in relation to each other. Realistic lighting shows "
+        "seams, divides space, and indicates moving parts.\n\n"
+
+        "Bold, graphic, intentional.\n\n"
+
+        "The foundational elements of print based design typography, grids, space, scale, color, "
+        "and use of imagery guide visual treatments. These elements do far more than please the "
+        "eye. They create hierarchy, meaning, and focus. Deliberate color choices, edge to edge "
+        "imagery, large scale typography, and intentional white space create a bold and graphic "
+        "interface that immerse the user in the experience.\n"
+        "An emphasis on user actions makes core functionality immediately apparent and provides "
+        "waypoints for the user.\n\n"
+
+        "Motion provides meaning.\n\n"
+
+        "Motion respects and reinforces the user as the prime mover. Primary user actions are "
+        "inflection points that initiate motion, transforming the whole design.\n"
+        "All action takes place in a single environment. Objects are presented to the user without "
+        "breaking the continuity of experience even as they transform and reorganize.\n"
+        "Motion is meaningful and appropriate, serving to focus attention and maintain continuity. "
+        "Feedback is subtle yet clear. Transitions are efﬁcient yet coherent.\n\n"
+
+        "3D world.\n\n"
+
+        "The material environment is a 3D space, which means all objects have x, y, and z "
+        "dimensions. The z-axis is perpendicularly aligned to the plane of the display, with the "
+        "positive z-axis extending towards the viewer. Every sheet of material occupies a single "
+        "position along the z-axis and has a standard 1dp thickness.\n"
+        "On the web, the z-axis is used for layering and not for perspective. The 3D world is "
+        "emulated by manipulating the y-axis.\n\n"
+
+        "Light and shadow.\n\n"
+
+        "Within the material environment, virtual lights illuminate the scene. Key lights create "
+        "directional shadows, while ambient light creates soft shadows from all angles.\n"
+        "Shadows in the material environment are cast by these two light sources. In Android "
+        "development, shadows occur when light sources are blocked by sheets of material at "
+        "various positions along the z-axis. On the web, shadows are depicted by manipulating the "
+        "y-axis only. The following example shows the card with a height of 6dp.\n\n"
+
+        "Resting elevation.\n\n"
+
+        "All material objects, regardless of size, have a resting elevation, or default elevation "
+        "that does not change. If an object changes elevation, it should return to its resting "
+        "elevation as soon as possible.\n\n"
+
+        "Component elevations.\n\n"
+
+        "The resting elevation for a component type is consistent across apps (e.g., FAB elevation "
+        "does not vary from 6dp in one app to 16dp in another app).\n"
+        "Components may have different resting elevations across platforms, depending on the depth "
+        "of the environment (e.g., TV has a greater depth than mobile or desktop).\n\n"
+
+        "Responsive elevation and dynamic elevation offsets.\n\n"
+
+        "Some component types have responsive elevation, meaning they change elevation in response "
+        "to user input (e.g., normal, focused, and pressed) or system events. These elevation "
+        "changes are consistently implemented using dynamic elevation offsets.\n"
+        "Dynamic elevation offsets are the goal elevation that a component moves towards, relative "
+        "to the component’s resting state. They ensure that elevation changes are consistent "
+        "across actions and component types. For example, all components that lift on press have "
+        "the same elevation change relative to their resting elevation.\n"
+        "Once the input event is completed or cancelled, the component will return to its resting "
+        "elevation.\n\n"
+
+        "Avoiding elevation interference.\n\n"
+
+        "Components with responsive elevations may encounter other components as they move between "
+        "their resting elevations and dynamic elevation offsets. Because material cannot pass "
+        "through other material, components avoid interfering with one another any number of ways, "
+        "whether on a per component basis or using the entire app layout.\n"
+        "On a component level, components can move or be removed before they cause interference. "
+        "For example, a floating action button (FAB) can disappear or move off screen before a "
+        "user picks up a card, or it can move if a snackbar appears.\n"
+        "On the layout level, design your app layout to minimize opportunities for interference. "
+        "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
+        "when a user tries to pick up one of cards.\n\n"
+    </string>
+    <string name="action_settings">Paramètres</string>
+    <string name="mutenotification">Notification de silence</string>
+    <string name="clearchat">Effacer le chat</string>
+    <string name="makeshortcut">Créer un raccourci</string>
+    <string name="nomessage">PAS DE NOUVEAUX MESSAGES</string>
+    <string name="seotags">Ajouter des balises. (Aide pour le référencement) Est: - art, merveille, noms de films, marque, ...... etc</string>
+    <string name="linkshare">Saisissez le lien si vous souhaitez rediriger vos utilisateurs.</string>
+    <string name="erroruploadingcover">Erreur lors du téléchargement de la couverture de l\'album.</string>
+    <string name="albumchangessuccesfully">La couverture de l\'album a bien été modifiée</string>
+    <string name="deleteallmsg">Supprimer tous les messages.</string>
+    <string name="deleteallmsgnotice">REMARQUE: - Seul le message que vous avez envoyé de votre côté sera supprimé.</string>
+    <string name="deletebig">EFFACER</string>
+    <string name="tryagain">Veuillez appuyer à nouveau.</string>
+    <string name="cancelbig">ANNULER</string>
+    <string name="entermessage">Entrez votre message...</string>
+    <string name="entercomment">Entrez votre commentaire ...</string>
+    <string name="entervaildcomment">Entrez un commentaire valide.</string>
+    <string name="enterwhilecomment">Erreur lors de l\'ajout du commentaire.</string>
+    <string name="enteryourname">Entrez votre nom, il ne peut pas être vide.</string>
+    <string name="changedyouremail">Vous avez modifié votre adresse e-mail, veuillez patienter.</string>
+    <string name="usernameisregistered">Ce nom d\'utilisateur est déjà enregistré.</string>
+    <string name="usernamechanged">Le nom d\'utilisateur a bien été modifié.</string>
+    <string name="errorupdatingusername">Erreur lors de la mise à jour du nom d\'utilisateur.</string>
+    <string name="passwordcannotbesame">Le mot de passe ne peut pas être le même.</string>
+    <string name="passwordcannotbemorethan">Votre mot de passe doit comporter plus de 6 caractères.</string>
+    <string name="errorupdatingpassword">Erreur lors de la mise à jour du mot de passe.</string>
+    <string name="wrongpassword">Mauvais mot de passe, veuillez réessayer.</string>
+    <string name="passwordchanged">Le mot de passe a été changé avec succès.</string>
+    <string name="verficationemailsendnotice">Un e-mail de vérification a été envoyé à votre adresse e-mail enregistrée. Veuillez le vérifier. Après avoir vérifié à partir de la vérification, cliquez sur envoyé sur votre e-mail, veuillez cliquer sur le bouton \'Vérifier\' ci-dessous.</string>
+    <string name="verify">Vérifier</string>
+    <string name="emailchanged">L\'e-mail a bien été modifié.</string>
+    <string name="errorupdatingemail">Erreur lors de la mise à jour de votre e-mail.</string>
+    <string name="connectionerrortryagain">Erreur de connexion, veuillez réessayer après un certain temps.</string>
+    <string name="updatedsuccessfully">Mis à jour avec succés.</string>
+    <string name="errorupdating">Erreur lors de la mise à jour.</string>
+    <string name="errorupdatingphoneno">Erreur lors de la mise à jour du numéro de téléphone.</string>
+    <string name="phonenoupdated">Numéro de téléphone mis à jour avec succès.</string>
+    <string name="erroruploadingprofilepic">Erreur lors du téléchargement de votre photo de profil.</string>
+    <string name="profilepicuploaded">Photo de profil téléversée avec succès.</string>
+    <string name="newmsgrequest">Demande de nouveau message</string>
+    <string name="msgrequest">DEMANDE DE MESSAGE</string>
+    <string name="phoneauthavailable">Désolé! L\'authentification par téléphone n\'est pas disponible pour le moment.</string>
+    <string name="authtype">Veuillez choisir votre type d\'authentification.</string>
+    <string name="entercode">Entrer le code.</string>
+    <string name="emailauthenabled">Authentification en deux étapes activée avec succès.</string>
+    <string name="pleasecheckcode">Veuillez vérifier votre code.</string>
+    <string name="connectionerrorbig">ERREUR DE CONNEXION.</string>
+    <string name="verficationemailsend1">"Entrez votre code de vérification que nous avons envoyé sur votre "</string>
+    <string name="verficationemailsend2">. \n Veuillez vérifier le courrier électronique de Wallpo dans le spam si vous ne l\'avez pas trouvé.</string>
+    <string name="seconds">" deuxième"</string>
+    <string name="verificationmailsend">E-mail de vérification envoyé avec succès.</string>
+    <string name="errorwhilsending">Erreur lors de l\'envoi du courrier.</string>
+    <string name="errorloadingimage">Erreur lors du chargement de l\'image.</string>
+    <string name="logintolikeposts">Connectez-vous pour aimer les messages.</string>
+    <string name="homscreenchangedsuccessfully">Le fond d\'écran de l\'écran d\'accueil a été modifié avec succès.</string>
+    <string name="lockscreenchangedsuccessfully">Le fond d\'écran de verrouillage a bien été modifié.</string>
+    <string name="permissiondeclined">Autorisation refusée.</string>
+    <string name="errorloadingpost">Erreur lors du chargement du message.</string>
+    <string name="errorloadinguserprofile">Erreur lors du chargement du profil utilisateur.</string>
+    <string name="updateyourapp">Mettez à jour votre application.</string>
+    <string name="deletecomment">Supprimer le commentaire</string>
+    <string name="deletecommentnotice">Êtes-vous sûr de vouloir supprimer le commentaire.</string>
+    <string name="pleasewait">S\'il vous plaît, attendez..</string>
+    <string name="errordeletingcomment">Erreur lors de la suppression du commentaire.</string>
+    <string name="today">" aujourd'hui"</string>
+    <string name="dayshort">" d"</string>
+    <string name="monthshort">" m"</string>
+    <string name="ontrending">" SUR LES TENDANCES"</string>
+    <string name="secondsshort">" s"</string>
+    <string name="Today">" Aujourd'hui"</string>
+    <string name="daysago">" il y a quelques jours"</string>
+    <string name="monthsago">" Il y a des mois"</string>
+    <string name="logintofavposts">Connectez-vous pour mettre les articles en favori.</string>
+    <string name="imagenotloadedproperly">L\'image n\'est pas chargée correctement.</string>
+    <string name="sendmail">Envoyer un mail.</string>
+    <string name="messagehassent">Message envoyé.</string>
+    <string name="pressagain">Veuillez appuyer à nouveau.</string>
+    <string name="viewvideo">VOIR LA VIDÉO</string>
+    <string name="viewimage">VOIR L\'IMAGE</string>
+    <string name="deletefirewall">Supprimer de fire wall</string>
+    <string name="deletefirewallnotice">Voulez-vous vraiment supprimer votre histoire sur Fire wall.</string>
+    <string name="errordeletingfirewall">Erreur lors de la suppression...</string>
+    <string name="deletefirewallsuccessfully">Supprimé avec succès de fire wall.</string>
+    <string name="dayshortago">" il y a j"</string>
+    <string name="monthshortago">" il y a m"</string>
+    <string name="usedashomescreen">Utilisé comme fond d\'écran d\'accueil</string>
+    <string name="usedaslockscreen">Utilisé comme fond d\'écran de verrouillage</string>
+    <string name="shareduserprofile">PARTAGÉ: profil utilisateur</string>
+    <string name="sharedalbums">PARTAGÉ: Album</string>
+    <string name="sharedposts">PARTAGÉ: Messages</string>
+    <string name="sharednew">PARTAGÉ: ....</string>
+    <string name="risingartists">Artistes émergents</string>
+    <string name="trendingonfirewall">Tendance sur Fire Wall</string>
+    <string name="trendingaccounts">Compte tendance</string>
+    <string name="trendingon">"Tendance sur "</string>
+    <string name="recentpostsof">"ARTICLES RÉCENTS DE "</string>
+    <string name="linkerror">Erreur de lien</string>
+    <string name="postnotfound">Photo introuvable</string>
+    <string name="albumnotfound">Album introuvable</string>
+    <string name="videopowersavingon">"Mode d\'économie d\'énergie du fond d\'écran en direct. (SUR) "</string>
+    <string name="videopowersavingoff">Mode d\'économie d\'énergie du fond d\'écran en direct. (DE)</string>
+    <string name="wallpapsetterchangedsuccess">Le réglage du papier peint a bien été modifié.</string>
+    <string name="morethannoticesubs">Vous avez besoin de plus de 20 000 abonnés pour activer la monétisation sur votre compte.</string>
+    <string name="lessthanlongsubs">Pour l\'instant, la monétisation est activée pour des créateurs particuliers, ou vérifiez simplement les mises à jour de l\'application que nous couvrons de plus en plus de créateurs à chaque mise à jour, et si vous avez une idée ou souhaitez en savoir plus sur le programme, envoyez-nous un e-mail à \'ads@thewallpo.com \', Et que vous pouvez faire partie de Wallpo.</string>
+    <string name="enablemonetizationfor">"Activer la monétisation pour "</string>
+    <string name="enterwhatwanttosearch">Entrez ce que vous voulez rechercher.</string>
+    <string name="entervaildword">Veuillez saisir un mot valide.</string>
+    <string name="firewall">Fire Wall</string>
+    <string name="logintosubscribe">Connectez-vous pour vous abonner</string>
+    <string name="default_notification_channel_id">124</string>
+    <string name="addbig">AJOUTER</string>
+    <string name="enteralbumname">Entrez le nom de l\'album.</string>
+    <string name="albumcreated">Album créé avec succès.</string>
+    <string name="errorwhilecreatingalbum">Erreur lors de la création d\'un nouvel album.</string>
+    <string name="createnewalbum">Créer un nouvel album.</string>
+    <string name="imagenotfound">Image non trouvée..</string>
+    <string name="uploadingimageonfirewall">Téléchargement d\'une image sur le pare-feu.</string>
+    <string name="erroruploadingimageonfirewall">Erreur lors du téléchargement de votre image sur Fire Wall.</string>
+    <string name="uploadingimageonfirewalldone">Statut téléchargé avec succès le Firewall.</string>
+    <string name="cannotselectmorecategory">Vous ne pouvez pas sélectionner plus de 3 catégories.</string>
+    <string name="statuscannotbeempty">Le champ d\'état ne peut pas être vide.</string>
+    <string name="statuscannotbeshort">Le statut ne peut pas être trop court.</string>
+    <string name="uploadingstatusonfirewall">Téléchargement de l\'état le fire wall.</string>
+    <string name="erroruploadingstatus">Téléchargement de l\'état le.</string>
+    <string name="statusuploadedonfirewall">Statut téléchargé avec succès le Firewall.</string>
+    <string name="seoisempty">Le référencement est copié à partir de vos derniers messages que vous avez téléchargés, le référencement est vide..</string>
+    <string name="seocopied">SEO copié avec succès.</string>
+    <string name="selectonecategory">Sélectionnez au moins une catégorie pour télécharger les articles.</string>
+    <string name="addonetag">Veuillez ajouter au moins une balise liée à votre position..</string>
+    <string name="uploadingpost">Téléchargement de l\'article sur Wallpo.</string>
+    <string name="erroruploadigpost">Erreur lors du téléchargement de vos messages.</string>
+    <string name="postsuploaded">Messages téléchargés avec succès.</string>
+    <string name="filenotfound">Fichier introuvable, réessayer.</string>
+    <string name="uploadingvideoonfirewall">Mise en ligne de la vidéo sur fire wall.</string>
+    <string name="erroruploadingvideofirewall">Erreur lors du téléchargement de votre vidéo sur Fire Wall.</string>
+    <string name="erroruploadigvideopost">Erreur lors du téléchargement de votre vidéo sur Fire Wall.</string>
+    <string name="uploadedonfirewall">Statut téléchargé avec succès le Firewall.</string>
+    <string name="errorwhilecroppingvideo">Erreur lors du recadrage de la vidéo..</string>
+    <string name="linkcopied">Lien copié avec succès.!</string>
+    <string name="donebig">TERMINÉ</string>
+    <string name="nouserfound">Aucun utilisateur trouvé</string>
+    <string name="errorwhileadjuctingvideo">Erreur lors du réglage de la vidéo.</string>
+    <string name="adjustingthevideo">S\'il vous plaît, attendez. Ajuster la vidéo.</string>
+    <string name="updatedsuccessfullyrefresh">Mis à jour avec succès, cela prendra un certain temps pour montrer l\'effet.</string>
+    <string name="errorwhileuploadingtryafter">Erreur lors de la mise à jour, veuillez réessayer après un certain temps.</string>
+    <string name="loginbig">S\'IDENTIFIER</string>
+    <string name="signupbig">S\'INSCRIRE</string>
+    <string name="signup">S\'inscrire</string>
+    <string name="entervalidemail">Entrez un e-mail valide.</string>
+    <string name="errorwhilesendingmail">Erreur lors de l\'envoi du courrier.</string>
+    <string name="emailnotfound">Email non trouvé. Inscrivez vous s\'il vous plait.</string>
+    <string name="resetlinksend">Réinitialiser l\'envoi du lien avec succès.</string>
+    <string name="checkemail">Veuillez vérifier votre compte de messagerie.</string>
+    <string name="enbletwoauth">Activer l\'authentification en deux étapes.</string>
+    <string name="selecttypeofauth">Sélectionnez le type d\'authentification à activer</string>
+    <string name="authusingemail">Authentification à l\'aide de (EMAIL)</string>
+    <string name="authusingphone">Authentification avec (NUMÉRO DE TÉLÉPHONE)</string>
+    <string name="enablebig">ACTIVER</string>
+    <string name="verificationcodesent">Code de verification envoyé</string>
+    <string name="notice">remarquer</string>
+    <string name="submitbig">SOUMETTRE</string>
+    <string name="zeroseconds">30 secondes</string>
+    <string name="resendcodebig">RENVOYER LE CODE</string>
+    <string name="twofactoractiviate">L\'authentification à deux facteurs est activée à l\'aide de votre e-mail sur votre compte.</string>
+    <string name="disablebig">" DÉSACTIVER "</string>
+    <string name="acceptbig">J\'ACCEPTE</string>
+    <string name="clickacceptchat">Après avoir cliqué sur accepter, vous commencerez à recevoir des notifications, si l\'utilisateur vous envoie un message. \n Vous pouvez bloquer la notification utilisateur si vous le souhaitez.</string>
+    <string name="typemessage">Type de message..</string>
+    <string name="logintocomment">Connectez-vous pour commenter</string>
+    <string name="comment">Commentaire.</string>
+    <string name="sendverificationemail">Envoyer email de vérification</string>
+    <string name="name">Nom</string>
+    <string name="enternameedit">Entrez le nom...</string>
+    <string name="Username">Nom d\'utilisateur</string>
+    <string name="enterusername">Saisissez votre nom d\'utilisateur...</string>
+    <string name="category">Catégorie</string>
+    <string name="entercategory">Entrez la catégorie...</string>
+    <string name="website">le site Web</string>
+    <string name="enterwebsite">Entrez sur le site Web...</string>
+    <string name="bio">Bio</string>
+    <string name="enterbio">Entrez votre bio...</string>
+    <string name="privateinfo">Informations \n privées</string>
+    <string name="emailaddress">Adresse électronique</string>
+    <string name="enteremail.">Entrez l\'email...</string>
+    <string name="phonenowithcode">Numéro de téléphone (avec l\'indicatif du pays)</string>
+    <string name="enterphoneno">Entrez le numéro de téléphone...</string>
+    <string name="changepassword">Changer \n mot de passe</string>
+    <string name="changeprofilepic">Modifier \n la photo de profil</string>
+    <string name="changebackphoto">Modifier \n Photo arrière</string>
+    <string name="savebig">" ENREGISTRER "</string>
+    <string name="uploadpost">Télécharger le message</string>
+    <string name="entercaption">Saisir légende.</string>
+    <string name="selectcategory">Choisir une catégorie</string>
+    <string name="youralbum">Vos albums</string>
+    <string name="addtags">Ajouter des balises</string>
+    <string name="copyseos">Cliquez pour copier les SEO</string>
+    <string name="uploadbig">" TÉLÉCHARGER "</string>
+    <string name="uploadimageonfirewall">TÉLÉCHARGER DES IMAGES SUR LE FIRE WALL</string>
+    <string name="stayconnectedsub">RESTEZ CONNECTÉ AVEC VOS ABONNÉS</string>
+    <string name="shareyourthoughts">Partage tes pensées ?</string>
+    <string name="shareimageonfirewall">PARTAGER L\'IMAGE SUR FIRE WALL</string>
+    <string name="sharevideoonfirewall">PARTAGER LA VIDÉO SUR FIRE WALL</string>
+    <string name="likedpostsbig">POSTES AIMÉS</string>
+    <string name="forgetpassword">"Mot de passe oublié ? "</string>
+    <string name="messagerequest">Demande de message</string>
+    <string name="addaccount">AJOUTER UN COMPTE</string>
+    <string name="subscribed">ABONNÉ</string>
+    <string name="subscribers">LES ABONNÉS</string>
+    <string name="subscribe">SOUSCRIRE</string>
+    <string name="editprofilebig">EDITER LE PROFIL</string>
+    <string name="trendingposts">POSTES TENDANCES</string>
+    <string name="noposts">PAS DE POSTES</string>
+    <string name="postsbig">DES POSTES</string>
+    <string name="albums">Les albums</string>
+    <string name="noalbums">PAS D\'ALBUMS</string>
+    <string name="nostories">PAS D\'HISTOIRES SUR FIRE WALL</string>
+    <string name="uploadstatus">TÉLÉCHARGER LE STATUT SUR FIREWALL</string>
+    <string name="shareyourfeeling">Partagez votre sentiment, aujourd\'hui ?</string>
+    <string name="sharestatusonfirewall">PARTAGER LE STATUT SUR FIRE WALL</string>
+    <string name="addstoriescomment">Ajouter un commentaire sur les histoires.</string>
+    <string name="history">" L\'histoire "</string>
+    <string name="haventsavedanypost">Vous n\'avez utilisé aucun message.</string>
+    <string name="trimmingvideo">Découper la vidéo à télécharger Veuillez patienter.!</string>
+    <string name="videotoupload">Sélectionnez la vidéo à télécharger</string>
+    <string name="uploadvideoonfirewall">TÉLÉCHARGER LA VIDÉO SUR FIRE WALL</string>
+    <string name="shareyourthought">Partage tes pensées ?</string>
+    <string name="wallpapersettertype">Choisissez le type de fond d\'écran</string>
+    <string name="defualt">Défaut</string>
+    <string name="fit">En forme</string>
+    <string name="crop">Surgir</string>
+    <string name="options">Options</string>
+    <string name="albumsposts">POSTES D\'ALBUMS</string>
+    <string name="aboutbig">À PROPOS </string>
+    <string name="wallpapersetter1">(Le fond d\'écran sera redimensionné en fonction de l\'écran de votre appareil)</string>
+    <string name="wallpapersetter2">(Tout le fond d\'écran sera redimensionné et adapté à tout l\'écran de votre appareil)</string>
+    <string name="wallpapersetter3">(L\'utilisateur sera redirigé vers le rogneur d\'image, l\'utilisateur peut définir la taille du fond d\'écran en fonction de son choix.)</string>
+    <string name="wallpapersetter4">(Lors de la configuration du fond d\'écran, l\'utilisateur sera fourni par des options pour choisir parmi Par défaut, Ajuster, Recadrer)</string>
+    <string name="changepasswordbig">CHANGER LE MOT DE PASSE</string>
+    <string name="oldpassword">Ancien mot de passe</string>
+    <string name="newpassword">Nouveau mot de passe</string>
+    <string name="suredeleteposts">Voulez-vous vraiment supprimer ce message ?</string>
+    <string name="deletepost">SUPPRIMER LE POSTE</string>
+    <string name="editposts">Modifier les messages</string>
+    <string name="editalbum">MODIFIER L\'ALBUM</string>
+    <string name="changealbumcover">CHANGER LA COUVERTURE DE L\'ALBUM</string>
+    <string name="albumname">Nom de l\'album</string>
+    <string name="albumabout">Album À propos</string>
+    <string name="updatebig">" METTRE À JOUR "</string>
+    <string name="trendingalbums">Albums populaires</string>
+    <string name="postsforyou">Posts pour vous</string>
+    <string name="favtopic">Sujet préféré</string>
+    <string name="wallpoads">Wallpo Ads</string>
+    <string name="beta">Bêta</string>
+    <string name="growithwallpo">Grandir avec Wallpo</string>
+    <string name="monetizewallpoaccount">Monétisez votre compte Wallpo</string>
+    <string name="readintrocarefully">Lisez attentivement les instructions avant de demander la monétisation sur votre compte.</string>
+    <string name="zerosubs">" 0 / 20000 Les abonnés"</string>
+    <string name="mailus">" ENVOYEZ-NOUS UN MAIL "</string>
+    <string name="monetize">Monétiser</string>
+    <string name="nonewnotifi">Pas de nouvelle notification</string>
+    <string name="twostepauthbig">AUTHENTIFICATION EN DEUX ÉTAPES</string>
+    <string name="newbig">" NEUF "</string>
+    <string name="viewstories">Voir les histoires</string>
+    <string name="resetpasswordbig">RÉINITIALISER LE MOT DE PASSE</string>
+    <string name="enteryourregisteremail">Entrez votre adresse e-mail d\'inscription.</string>
+    <string name="sendverificationcode">" ENVOYER LE CODE DE VÉRIFICATION "</string>
+    <string name="shareposts">PARTAGEZ LES POSTES</string>
+    <string name="searchuser">Rechercher un utilisateur.</string>
+    <string name="copylink">Copier le lien</string>
+    <string name="shareexternal">Partager externe</string>
+    <string name="find">Trouver</string>
+    <string name="signouttitle">Êtes-vous certain de vouloir vous déconnecter ?</string>
+    <string name="signout">DÉCONNEXION</string>
+    <string name="languagechnage">La langue de l\'application a été modifiée avec succès, redémarrez l\'application pour voir l\'effet.</string>
+    <string name="restart">Redémarrer</string>
+    <string name="feedback">Retour d\'information</string>
+    <string name="feedbacktitle">Faites de wallpo un meilleur endroit..</string>
+    <string name="enterfeedback">Entrez vos commentaires...</string>
+    <string name="sendbig">ENVOYER</string>
+    <string name="thanksyouforfeedback">Merci pour vos précieux commentaires..</string>
+    <string name="newmessage">Nouveau message</string>
+    <string name="loginagreetandc"><u>En vous inscrivant ou en vous connectant, vous acceptez nos termes et conditions</u></string>
+
+</resources>

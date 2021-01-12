@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".activity.CommentActivity">
+
+    <RelativeLayout
+        android:id="@+id/rellaymain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:id="@+id/rellay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.github.florent37.shapeofview.shapes.CircleView
+                android:id="@+id/circlelay"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                app:shape_circle_borderColor="@color/cardsignup"
+                app:shape_circle_borderWidth="1dp">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/profilepic" />
+
+            </com.github.florent37.shapeofview.shapes.CircleView>
+
+            <TextView
+                android:id="@+id/caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:layout_toEndOf="@id/circlelay"
+                android:layout_toRightOf="@id/circlelay"
+                android:fontFamily="@font/segoeui"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/rellay"
+            android:layout_margin="10dp"
+            android:background="@android:color/white" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/mainlay"
+        android:layout_below="@+id/rellaymain" />
+
+    <LinearLayout
+        android:id="@+id/mainlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="3dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/logincomment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            app:cardBackgroundColor="@color/cardsignup"
+            app:cardCornerRadius="9dp">
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:fontFamily="@font/helvetica"
+                android:text="@string/logintocomment"
+                android:textColor="@android:color/white" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginEnd="9dp"
+                android:layout_marginRight="9dp"
+                app:cardCornerRadius="8dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="5dp"
+                    android:rotation="180"
+                    android:src="@drawable/ic_left_arrow" />
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/commenttext"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:layout_weight="9"
+            android:background="@drawable/roundsearch"
+            android:hint="@string/comment"
+            android:inputType="text"
+            android:lineHeight="1dp"
+            android:lines="1"
+            android:maxLines="1"
+            android:minEms="1"
+            android:padding="14dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textColorLink="@android:color/white" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/addcomment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_send"
+            app:cardBackgroundColor="@color/cardsignup"
+            app:cardCornerRadius="8dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:src="@drawable/ic_send" />
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

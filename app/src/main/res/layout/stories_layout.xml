@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainlay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="250dp"
+        android:layout_height="350dp"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="18dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/black">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/imgcard"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="11dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="9dp"
+                app:cardCornerRadius="5dp">
+
+                <ImageView
+                    android:id="@+id/profilepic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/profilepic" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/displayname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoeui"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="15dp"
+                android:layout_toStartOf="@+id/options"
+                android:layout_toLeftOf="@+id/options"
+                android:layout_toEndOf="@id/imgcard"
+                android:layout_toRightOf="@id/imgcard"
+                android:text="Rizwan Sayyed Ahmed"
+                android:textColor="@android:color/white" />
+
+            <ImageView
+                android:id="@+id/options"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="15dp"
+                android:src="@drawable/ic_menu" />
+
+            <ScrollView
+                android:layout_above="@+id/comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgcard">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/segoeui"
+                        android:gravity="center"
+                        android:text="@string/limit"
+                        android:textColor="@android:color/white" />
+
+
+                </RelativeLayout>
+
+            </ScrollView>
+
+            <com.varunest.sparkbutton.SparkButton
+                android:id="@+id/likebutton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_above="@+id/golay"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                app:sparkbutton_activeImage="@drawable/ic_liked"
+                app:sparkbutton_iconSize="30dp"
+                app:sparkbutton_inActiveImage="@drawable/ic_like"
+                app:sparkbutton_primaryColor="@color/colorPrimary"
+                app:sparkbutton_secondaryColor="@color/white" />
+
+            <TextView
+                android:id="@+id/likeno"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/golay"
+                android:layout_marginStart="6dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginBottom="3dp"
+                android:layout_toEndOf="@id/likebutton"
+                android:layout_toRightOf="@id/likebutton"
+                android:fontFamily="@font/worlsans"
+                android:text="17k"
+                android:textColor="@android:color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/date"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/golay"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="5dp"
+                android:text="today"
+                android:textColor="@android:color/white"
+                android:layout_marginEnd="6dp" />
+
+
+            <ImageView
+                android:id="@+id/comment"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_above="@+id/golay"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_comment" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/golay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp"
+                android:background="@drawable/roundprofilebutton"
+                android:fontFamily="@font/cassannet"
+                android:text="VIEW VIDEO"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/progressbar"
+        style="@style/SpinKitView.Large.FadingCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        app:SpinKit_Color="@color/signup" />
+
+</RelativeLayout>

@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'com.google.firebase.firebase-perf'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion '30.0.2'
+
+    signingConfigs {
+        release {
+            storeFile file("../wallpokey.jks")
+            storePassword 'wallpo@1234'
+            keyAlias 'key0'
+            keyPassword 'wallpo@1234'
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.wallpo.android"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 222
+        versionName "1.06.254595"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    
+    android {
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.room:room-runtime:2.3.0-alpha04'
+    implementation 'com.google.android.play:core:1.9.0'
+    annotationProcessor 'androidx.room:room-compiler:2.3.0-alpha04'
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation 'org.jsoup:jsoup:1.13.1'
+
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
+
+    implementation 'com.google.firebase:firebase-analytics:18.0.0'
+
+    implementation 'androidx.exifinterface:exifinterface:1.3.2'
+    implementation 'com.google.firebase:firebase-messaging:21.0.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.facebook.android:facebook-login:5.15.3'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0-beta01'
+    implementation 'com.google.android.material:material:1.3.0-beta01'
+    implementation 'com.github.varunest:sparkbutton:1.0.6'
+    implementation 'com.sothree.slidinguppanel:library:3.4.0'
+    implementation 'com.ablanco.zoomy:zoomy:1.1.0'
+    implementation 'com.github.bachors:Android-WordToSpan:3.1'
+    implementation 'com.karumi:dexter:6.2.1'
+    implementation 'com.github.florent37:shapeofview:1.4.7'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+  //  implementation project(':videocropper')
+    implementation 'com.google.firebase:firebase-storage:19.2.1'
+    implementation 'com.google.firebase:firebase-database:19.6.0'
+    implementation 'com.google.android.exoplayer:exoplayer:2.11.7'
+    implementation 'androidx.tonyodev.fetch2:xfetch2:3.1.4'
+    implementation 'com.google.firebase:firebase-crashlytics:17.3.0'
+    implementation 'com.google.firebase:firebase-perf:19.0.11'
+    implementation 'com.android.billingclient:billing:3.0.2'
+
+    implementation 'com.google.android.gms:play-services-ads:19.6.0'
+
+    implementation files('libs/aspectjrt-1.7.3.jar')
+
+    implementation files('libs/isoparser-1.0.6.jar')
+
+}

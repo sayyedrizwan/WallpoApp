@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/black"
+    android:layout_height="match_parent">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/sure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="11dp"
+        android:fontFamily="@font/lovelo"
+        android:text="@string/suredeleteposts"
+        android:textColor="@android:color/white"
+        android:layout_centerHorizontal="true"/>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="100dp"
+        android:layout_margin="8dp"
+        android:layout_below="@+id/sure"
+        android:id="@+id/cardview"
+        app:cardCornerRadius="8dp"
+        android:layout_height="140dp">
+
+        <ImageView
+            android:id="@+id/imageview"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="11dp"
+        android:textColor="@android:color/white"
+        android:layout_toRightOf="@id/cardview"
+        android:layout_toEndOf="@id/cardview" />
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/loadingbar"
+        style="@style/SpinKitView.Large.Wave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_centerInParent="true"
+        android:translationY="-15dp"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/colorPrimary" />
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cardview"
+        android:layout_margin="8dp"
+        android:background="@drawable/roundprofilebutton"
+        android:fontFamily="@font/helvetica"
+        android:text="@string/deletepost"
+        android:textColor="@android:color/white" />
+
+
+</RelativeLayout>

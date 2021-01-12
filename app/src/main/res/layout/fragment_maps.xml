@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".fragment.MapsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/mainlay"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/roundborderviewposts"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/maplocation"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/segoeui"
+                android:gravity="center"
+                android:text="@string/taponlocationgetdata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/searchtext"
+                android:layout_width="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:background="@drawable/roundsearch"
+                android:hint="@string/searchlocation"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:lineHeight="1dp"
+                android:lines="1"
+                android:maxLines="1"
+                android:minEms="1"
+                android:visibility="gone"
+                android:padding="11dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:textColorLink="@android:color/white" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/searchimg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="9dp"
+                android:src="@drawable/ic_search" />
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/spin_kit"
+                android:layout_centerInParent="true"
+                style="@style/SpinKitView.Large.Wave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:SpinKit_Color="@color/signup" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/locationlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/blacksmart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/maintitle"
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                    android:text="@string/welcometowallpomap"
+                    android:textColor="@android:color/white"
+                    app:fontFamily="@font/lovelo">
+
+                </androidx.appcompat.widget.AppCompatTextView>
+
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_below="@+id/maintitle"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="20dp"
+                    android:background="@android:color/white" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/sectitle"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                    android:text="@string/mapnotice"
+                    android:textColor="@android:color/white"
+                    app:fontFamily="@font/segoeui"/>
+
+                <RelativeLayout
+                    android:layout_margin="20dp"
+                    android:id="@+id/enablelocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sectitle"
+                    android:background="@drawable/roundwallpapersettingmark">
+
+                   <androidx.appcompat.widget.AppCompatTextView
+                       android:layout_width="wrap_content"
+                       android:layout_margin="10dp"
+                       style="@style/TextAppearance.AppCompat.Medium"
+                       android:textColor="@android:color/white"
+                       app:fontFamily="@font/lovelo"
+                       android:layout_height="wrap_content"
+                       android:layout_centerInParent="true"
+                       android:text="@string/allow"/>
+                   
+
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/browseanyway"
+                    app:fontFamily="@font/segoeui"
+                    android:textColor="@android:color/white"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/enablelocation"
+                    android:text="@string/browseannyway"/>
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <Button
+            android:visibility="gone"
+            android:id="@+id/buttn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

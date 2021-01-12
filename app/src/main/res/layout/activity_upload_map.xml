@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/mainlay"
+    android:layout_height="match_parent"
+    tools:context=".maps.UploadMapActivity">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/roundborderviewposts"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/maplocation"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/segoeui"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/taponlocation"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/searchtext"
+            android:layout_width="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:background="@drawable/roundsearch"
+            android:hint="@string/searchlocation"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:lineHeight="1dp"
+            android:lines="1"
+            android:maxLines="1"
+            android:minEms="1"
+            android:padding="14dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textColorLink="@android:color/white"
+            android:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/searchimg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="9dp"
+            android:src="@drawable/ic_search" />
+
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

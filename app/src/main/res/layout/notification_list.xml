@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rellayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="13dp"
+        app:cardCornerRadius="11dp"
+        android:id="@+id/mainlay"
+        app:cardBackgroundColor="@color/browser_actions_bg_grey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="50dp"
+                android:layout_margin="10dp"
+                android:id="@+id/userpics"
+                android:layout_alignParentTop="true"
+                android:layout_height="50dp"
+                android:src="@drawable/logo"/>
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/loginbar"
+                android:layout_margin="8dp"
+                android:layout_below="@id/userpics"
+                style="@style/SpinKitView.Large.Wave"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:SpinKit_Color="@color/signup" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@+id/userpics"
+                android:id="@+id/date"
+                android:fontFamily="@font/helvetica"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@android:color/black"
+                android:layout_height="wrap_content"
+                android:text="2d"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_toLeftOf="@+id/imagecard"
+                android:layout_toRightOf="@+id/userpics"
+                android:layout_marginTop="6dp"
+                android:id="@+id/newposts"
+                android:fontFamily="@font/helvetica"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@android:color/black"
+                android:layout_height="wrap_content"
+                android:text="New Posts for Rizwan Sayyed"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_margin="7dp"
+                android:id="@+id/imagecard"
+                android:layout_alignParentRight="true"
+                app:cardCornerRadius="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/userpost"
+                    android:scaleType="centerCrop"
+                    android:layout_width="60dp"
+                    android:layout_height="90dp"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/newposts"
+                android:layout_toLeftOf="@+id/imagecard"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_toRightOf="@+id/userpics"
+                android:fontFamily="@font/segoeui"
+                android:id="@+id/captions"
+                android:layout_height="wrap_content"
+                android:text="#Captions heree Havsfs sgshsghgsjkhhs hshgsg "/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

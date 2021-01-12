@@ -1,0 +1,3 @@
+include ':videocropper'
+include ':app'
+rootProject.name = "Wallpo"

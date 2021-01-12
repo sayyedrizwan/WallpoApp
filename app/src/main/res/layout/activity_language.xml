@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".extra.LanguageActivity">
+
+    <RelativeLayout
+        android:id="@+id/mainlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/firstlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/roundwallpapersetting"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:fontFamily="@font/lovelo"
+                android:text=" W "
+                android:textColor="@android:color/white"
+                android:textSize="60sp" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/english"
+                android:clickable="false"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:buttonTint="@android:color/white"
+                android:text="English"
+                android:textColor="@android:color/white"
+                android:translationY="-10dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/seclay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/firstlay"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:id="@+id/frenchlayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text=" W "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/french"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:layout_margin="6dp"
+                    android:buttonTint="@android:color/white"
+                    android:text="French"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:id="@+id/hindi"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text=" व "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/hindi"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:buttonTint="@android:color/white"
+                    android:text="Hindi"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text=" わ "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/japanese"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:buttonTint="@android:color/white"
+                    android:text="Japanese"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/thirdlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/seclay"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text=" 와 "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/korean"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:buttonTint="@android:color/white"
+                    android:text="Korean"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text=" W "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/indonesian"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:layout_margin="6dp"
+                    android:buttonTint="@android:color/white"
+                    android:text="Indonesian"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text=" ث "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/arabic"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:clickable="false"
+                    android:buttonTint="@android:color/white"
+                    android:text="Arabic"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/forthlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/thirdlay"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text=" д "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/russian"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:layout_margin="6dp"
+                    android:buttonTint="@android:color/white"
+                    android:text="Russian"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text=" é "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/spanish"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:clickable="false"
+                    android:buttonTint="@android:color/white"
+                    android:text="Spanish"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text=" W "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/portuguese"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:buttonTint="@android:color/white"
+                    android:text="Portuguese"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fifthlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/forthlay"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:clickable="false"
+                    android:text=" 沃 "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/chinese"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:buttonTint="@android:color/white"
+                    android:text="Chinese"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text=" W "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/german"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:buttonTint="@android:color/white"
+                    android:text="German"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text=" ผ "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/thai"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:buttonTint="@android:color/white"
+                    android:text="Thai"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sixlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fifthlay"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text=" W "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/italian"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:buttonTint="@android:color/white"
+                    android:text="Italian"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text=" Ü "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/turkish"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:buttonTint="@android:color/white"
+                    android:text="Turkish"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text=" å "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/swedish"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:clickable="false"
+                    android:buttonTint="@android:color/white"
+                    android:text="Swedish"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/svthlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sixlay"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text=" W "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/dutch"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:clickable="false"
+                    android:buttonTint="@android:color/white"
+                    android:text="Dutch"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text=" W "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/finnish"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:buttonTint="@android:color/white"
+                    android:text="Finnish"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundwallpapersetting"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text=" ů "
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/czech"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:layout_margin="6dp"
+                    android:buttonTint="@android:color/white"
+                    android:text="Czech"
+                    android:textColor="@android:color/white"
+                    android:translationY="-10dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

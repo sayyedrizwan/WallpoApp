@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@android:color/black"
+    android:layout_height="match_parent"
+    tools:context=".utils.WallpaperWebActivity">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/maintop"
+        app:fontFamily="@font/lovelo"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:layout_marginRight="20dp"
+        android:text="Permission Required"
+        android:layout_centerHorizontal="true"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/maintop"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:id="@+id/maintextbottom"
+        android:layout_marginRight="20dp"
+        android:text="to set live wallpaper automatically without clicking on notification."
+        android:layout_centerHorizontal="true"/>
+
+     <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+         android:id="@+id/noticetxt"
+        android:layout_below="@+id/maintextbottom"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:layout_marginRight="20dp"
+        android:text="*Click on give permission button and then allow permission by enabling switch. "
+        android:layout_centerHorizontal="true"/>
+
+
+    <Button
+        android:id="@+id/givepermission"
+        android:layout_margin="50dp"
+        android:layout_below="@+id/noticetxt"
+        android:text="GIVE PERMISSION"
+        android:fontFamily="@font/lovelo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+
+    <Button
+        android:id="@+id/notnow"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="0dp"
+        android:layout_below="@+id/givepermission"
+        android:text="NOT NOW"
+        android:fontFamily="@font/segoeui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+
+
+</RelativeLayout>

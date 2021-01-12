@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/howtousetxt"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/lovelo"
+            android:text="@string/howtouse"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView3"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:fontFamily="@font/segoeui"
+            android:text="@string/whatiswallpo"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/howtousetxt" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/menu"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="12dp"
+            app:cardBackgroundColor="@color/black"
+            app:cardCornerRadius="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3">
+
+            <ImageView
+                android:id="@+id/menuimg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="9dp"
+                android:src="@drawable/ic_menu_home" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/menutxt"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/segoeui"
+            android:paddingRight="30dp"
+            android:text="@string/menuoptions"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/menu"
+            app:layout_constraintTop_toBottomOf="@+id/menu" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/menubox"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/segoeui"
+            android:paddingRight="30dp"
+            android:text="@string/menuoptions"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/menu"
+            app:layout_constraintTop_toBottomOf="@+id/menu" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/wallpaperset"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="15dp"
+            app:cardBackgroundColor="@color/black"
+            app:cardCornerRadius="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menutxt">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_wallpaper_" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/homscreentxt"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/segoeui"
+            android:paddingRight="30dp"
+            android:text="@string/wallpapersettxt"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/wallpaperset"
+            app:layout_constraintTop_toBottomOf="@+id/menutxt" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/wallpaperlockset"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="15dp"
+            app:cardBackgroundColor="@color/black"
+            app:cardCornerRadius="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wallpaperset">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="6dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_wallpaper_lock" />
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/homelockscreentxt"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/segoeui"
+            android:paddingRight="30dp"
+            android:text="@string/wallpaperlocksettxt"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/wallpaperlockset"
+            app:layout_constraintTop_toBottomOf="@+id/homscreentxt" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/wallpolastnoucie"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:fontFamily="@font/lovelo"
+            android:text="@string/wallpolastnoucie"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/wallpaperlockset"
+            android:paddingBottom="80dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

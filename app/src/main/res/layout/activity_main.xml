@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blacklite"
+    tools:context=".MainActivity">
+
+
+    <HorizontalScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text=" "
+                android:textColor="@android:color/white" />
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/logo" />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text="   "
+                android:textColor="@android:color/white" />
+
+
+            <TextView
+                android:id="@+id/home"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text="@string/home"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text="       "
+                android:textColor="@android:color/white" />
+
+
+            <TextView
+                android:id="@+id/trending"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text="@string/trending"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text="       "
+                android:textColor="@android:color/white" />
+
+
+            <TextView
+                android:id="@+id/explore"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text="@string/explore"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text="       "
+                android:textColor="@android:color/white" />
+
+
+            <TextView
+                android:id="@+id/maps"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text="@string/maps"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text="       "
+                android:textColor="@android:color/white" />
+
+
+            <TextView
+                android:id="@+id/notification"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text="@string/notification"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text="       "
+                android:textColor="@android:color/white" />
+
+
+            <TextView
+                android:id="@+id/monetize"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text="@string/monetization"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text="       "
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/search"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text="@string/search"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text="       "
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/profile"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text="@string/profile"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/profileempty"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/worlsans"
+                android:text="       "
+                android:textColor="@android:color/white" />
+
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <FrameLayout
+        android:id="@+id/framlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/loginbottom"
+        android:layout_below="@+id/scrollview"
+        android:background="@drawable/roundborder"
+        android:paddingStart="2dp"
+        android:paddingLeft="2dp"
+        android:paddingTop="3dp"
+        android:paddingEnd="2dp"
+        android:paddingRight="2dp">
+
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/loginbottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/black">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/loginlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:translationY="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardsignup"
+                android:paddingBottom="25dp">
+
+                <TextView
+                    android:id="@+id/signintext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/helvetica"
+                    android:text="Sign In"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:translationX="3dp"
+                    android:translationY="-5dp" />
+
+                <ImageView
+                    android:id="@+id/fblogin"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="8dp"
+                    android:layout_toEndOf="@id/signintext"
+                    android:layout_toRightOf="@id/signintext"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_facebook"
+                    android:transitionName="facebooklogo" />
+
+                <ImageView
+                    android:id="@+id/googlelogin"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="8dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_google"
+                    android:transitionName="googlelogo" />
+
+                <ImageView
+                    android:id="@+id/wallpologin"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="60dp"
+                    android:layout_marginRight="60dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="3dp"
+                    android:src="@mipmap/logo"
+                    android:transitionName="wallpologo" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/loginin"
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="9dp"
+                    android:layout_marginRight="9dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="9dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:rotation="180"
+                        android:src="@drawable/ic_left_arrow" />
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainlay"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/black">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/sendmessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="@android:color/black">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <com.github.florent37.shapeofview.shapes.CircleView
+                    android:id="@+id/seenlayout"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="5dp"
+                    app:shape_circle_borderColor="@color/cardsignup"
+                    app:shape_circle_borderWidth="2dp">
+
+                    <ImageView
+                        android:id="@+id/profileseenimg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="center"/>
+
+                </com.github.florent37.shapeofview.shapes.CircleView>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/displayname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/seenlayout"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="3dp"
+                    android:fontFamily="@font/segoeui"
+                    android:text=""
+                    android:textColor="@android:color/white" />
+
+            </RelativeLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/sure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="11dp"
+        android:fontFamily="@font/lovelo"
+        android:text="@string/viewstories"
+        android:textColor="@android:color/white" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cancel"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="8dp"
+        android:layout_alignParentEnd="true">
+
+        <ImageView
+            android:padding="5dp"
+            android:src="@drawable/ic_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:scaleType="fitCenter"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_below="@+id/cancel"/>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/loadingbar"
+        android:layout_centerInParent="true"
+        style="@style/SpinKitView.Large.Wave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/signup" />
+
+
+    <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+        android:id="@+id/videoview"
+        android:layout_below="@+id/cancel"
+        app:controller_layout_id="@layout/custom_playback_control"
+        android:layout_width="match_parent"
+        app:show_shuffle_button="true"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        app:show_buffering="always" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="11dp"
+        android:layout_below="@id/cancel"
+        android:layout_alignParentRight="true"
+        android:fontFamily="@font/segoeui"
+        android:text="@string/secondsshort"
+        android:textColor="@android:color/white"
+        android:layout_alignParentEnd="true" />
+
+
+
+</RelativeLayout>

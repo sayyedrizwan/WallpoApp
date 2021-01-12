@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="200dp"
+        android:layout_height="295dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="8dp">
+
+        <ImageView
+            android:id="@+id/backimg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_bg">
+
+            </FrameLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="60dp"
+                android:layout_above="@+id/username"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                app:cardCornerRadius="8dp"
+                android:layout_marginStart="10dp">
+
+                <ImageView
+                    android:id="@+id/profileimg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_toLeftOf="@id/subscribers"
+                android:fontFamily="@font/helvetica"
+                android:textColor="@android:color/white"
+                android:layout_margin="6dp"
+                android:id="@+id/username"
+                android:layout_alignParentLeft="true"
+                android:layout_width="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_height="wrap_content"
+                android:text=" - "
+                android:layout_toStartOf="@id/subscribers"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/subscribers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0K"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/lovelo"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="20dp"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

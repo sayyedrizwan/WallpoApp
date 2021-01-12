@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@android:color/black"
+    android:layout_height="match_parent"
+    tools:context=".subscription.PremiumActivity">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/renewscrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:visibility="gone"
+        android:background="@drawable/roundwallpapersetting">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp">
+
+        <ImageView
+            android:id="@+id/logoz"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="8dp"
+            android:src="@mipmap/logo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/wallpotitlez"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logoz"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/lovelo"
+            android:text="@string/premiumads"
+            android:textColor="@android:color/white" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/wallpotitlez"
+                android:layout_margin="25dp"
+                android:id="@+id/expiredsub"
+                android:fontFamily="@font/lovelo"
+                android:text="Your Subscription is expired."
+                android:layout_centerInParent="true"
+                android:textColor="@android:color/white" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expiredsub"
+                android:layout_centerInParent="true"
+                android:layout_margin="25dp"
+                android:id="@+id/noticeexpiry"
+                android:fontFamily="@font/segoeui"
+                android:text="Click on continue to renew subscription \nor click on view package to view other packages"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/changepackage"
+                android:text="View Package"
+                android:layout_margin="20dp"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/noticeexpiry"
+                android:layout_height="wrap_content" />
+
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/vaildscrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:visibility="gone"
+        android:background="@drawable/roundwallpapersetting">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp">
+
+            <ImageView
+                android:id="@+id/logos"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="8dp"
+                android:src="@mipmap/logo" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/wallpotitles"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logos"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/lovelo"
+                android:text="@string/premiumads"
+                android:textColor="@android:color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/expirydatetop"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/wallpotitles"
+                android:layout_centerInParent="true"
+                android:layout_margin="40dp"
+                android:fontFamily="@font/segoeui"
+                android:text="Subscription Expiry Date"
+                android:textColor="@android:color/white" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/expirydate"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/expirydatetop"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/segoeui"
+                android:text=""
+                android:textColor="@android:color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/expirydateend"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/expirydate"
+                android:gravity="center"
+                android:layout_margin="50dp"
+                android:fontFamily="@font/segoeui"
+                android:text="Subscription will end today."
+                android:textColor="@android:color/white" />
+
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_margin="4dp"
+        android:background="@drawable/roundwallpapersetting"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="8dp"
+                android:src="@mipmap/logo" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/wallpotitle"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logo"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/lovelo"
+                android:text="@string/premiumads"
+                android:textColor="@android:color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/wallpotitle"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/segoeui"
+                android:gravity="center"
+                android:text="@string/subscritionplanaval"
+                android:textColor="@android:color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textfield"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/wallpotitle"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/segoeui"
+                android:gravity="center"
+                android:text="@string/subscritionplanaval"
+                android:textColor="@android:color/white" />
+
+            <View
+                android:id="@+id/viewline"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/textfield"
+                android:layout_margin="20dp"
+                android:background="@android:color/white" />
+
+            <LinearLayout
+                android:id="@+id/adfreelay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/viewline"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="25"
+                    android:src="@drawable/ic_ad_block" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="75"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/helvetica"
+                        android:text="@string/adfree"
+                        android:textColor="@android:color/white" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeui"
+                        android:text="@string/adfreenotice"
+                        android:textColor="@android:color/white" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/upcomingfeature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/adfreelay"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="25"
+                    android:src="@drawable/ic_update" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="75"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/helvetica"
+                        android:text="@string/morepreiumupdate"
+                        android:textColor="@android:color/white" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeui"
+                        android:text="@string/morepreiumnotice"
+                        android:textColor="@android:color/white" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/defualtlay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/upcomingfeature"
+                android:layout_margin="10dp"
+                android:background="@drawable/roundwallpapersetting"
+                android:padding="5dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/recommendat"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/segoeui"
+                    android:text="@string/recommended"
+                    android:textColor="@android:color/white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/sixprice"
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/recommendat"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/lovelo"
+                    android:text="@string/symbol"
+                    android:textColor="@android:color/white"
+                    android:textSize="28sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sixprice"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/segoeui"
+                    android:text="@string/sixmonths"
+                    android:textColor="@android:color/white" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/linearlay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/defualtlay"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <RelativeLayout
+                    android:id="@+id/onemonthslay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="50"
+                    android:background="@drawable/roundwallpapersetting"
+                    android:padding="5dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/oneprice"
+                        style="@style/TextAppearance.AppCompat.Large"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:fontFamily="@font/lovelo"
+                        android:text="@string/symbol"
+                        android:textColor="@android:color/white"
+                        android:textSize="28sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/oneprice"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:fontFamily="@font/segoeui"
+                        android:text="@string/onemonths"
+                        android:textColor="@android:color/white" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/oneyearslay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="50"
+                    android:background="@drawable/roundwallpapersetting"
+                    android:padding="5dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/oneyrsprice"
+                        style="@style/TextAppearance.AppCompat.Large"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:fontFamily="@font/lovelo"
+                        android:text="@string/symbol"
+                        android:textColor="@android:color/white"
+                        android:textSize="28sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/oneyrsprice"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:fontFamily="@font/segoeui"
+                        android:text="@string/oneyear"
+                        android:textColor="@android:color/white" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:id="@+id/redeemcoupon"
+                android:layout_below="@+id/linearlay"
+                android:layout_marginTop="4dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica"
+                android:layout_marginBottom="90dp"
+                android:text="@string/havecoupon"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:id="@+id/continues"
+        android:layout_margin="11dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/roundwallpapersettingmark"
+        android:padding="5dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_margin="10dp"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/lovelo"
+            android:text="@string/continues" />
+
+    </RelativeLayout>
+
+    <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/spin_kit"
+        android:layout_centerInParent="true"
+        style="@style/SpinKitView.Large.Wave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/signup" />
+
+
+</RelativeLayout>

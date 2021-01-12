@@ -1,0 +1,65 @@
+{
+  "project_info": {
+    "project_number": "1068883663783",
+    "firebase_url": "https://wallpo-d7226.firebaseio.com",
+    "project_id": "wallpo-d7226",
+    "storage_bucket": "wallpo-d7226.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068883663783:android:64e20d928496bd68",
+        "android_client_info": {
+          "package_name": "com.wallpo.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068883663783-p668p35h0abtpocdu3hhm7b4mlvcct85.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wallpo.android",
+            "certificate_hash": "5bf9ae689117f2ef21f3e52ca46fbbe144e085d6"
+          }
+        },
+        {
+          "client_id": "1068883663783-69occf1f5b79a2305e6nak4gg7dq39n1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wallpo.android",
+            "certificate_hash": "4cb50b0e426769f4c2fba411a00f9658551f42b9"
+          }
+        },
+        {
+          "client_id": "1068883663783-sdrlv0o2tq0tpr9470rkiqllrfi2knbk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wallpo.android",
+            "certificate_hash": "fcceb92a3af1545ff043cf65a257b1e667fe9de8"
+          }
+        },
+        {
+          "client_id": "1068883663783-svdr3kt64ef2m7scca7lt3k2jb8nt9gg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCm0TKYiKZy8KRApgTjXoZ2OPEUA1gM3zY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068883663783-nlqm3mrc47p3qb527ueqm1gao5sdse6o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-2941808068005217~6883147945"
+    }
+  ],
+  "configuration_version": "1"
+}
