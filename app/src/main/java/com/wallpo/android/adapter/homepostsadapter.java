@@ -1052,7 +1052,7 @@ public class homepostsadapter extends RecyclerView.Adapter<homepostsadapter.View
 
                         if (timestamp > firsttime) {
                             increaseno(Photo.getUid(), "");
-                            reducenumber(Photo.getUid());
+                            updatecode.reducenumber(Photo.getUid());
                         } else {
                             Log.d(TAG, "onBindViewHolder: ");
                         }
@@ -1240,35 +1240,6 @@ public class homepostsadapter extends RecyclerView.Adapter<homepostsadapter.View
         }
     }
 
-    private void reducenumber(String uid) {
-
-        final OkHttpClient clientdel = new OkHttpClient();
-
-        RequestBody postData = new FormBody.Builder().add("id", String.valueOf(uid))
-                .build();
-
-        okhttp3.Request request = new okhttp3.Request.Builder()
-                .url(URLS.reduceadspoint)
-                .post(postData)
-                .addHeader("Content-Type", "application/x-www-form-urlencoded")
-                .build();
-
-        clientdel.newCall(request).enqueue(new Callback() {
-
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e(TAG, "onFailure: ", e);
-            }
-
-            @Override
-            public void onResponse(Call call, final Response response) throws IOException {
-                final String data = response.body().string().replaceAll(",\\[]", "");
-
-            }
-        });
-
-
-    }
 
     private void load(String imagepath, ImageView imgbg) {
         Glide.with(context).load(imagepath)
