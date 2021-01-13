@@ -2438,53 +2438,56 @@ public class updatecode {
     }
 
     public static void gads(Context context, String type) {
+
         MobileAds.initialize(context, initializationStatus -> {
         });
 
         InterstitialAd mInterstitial = new InterstitialAd(context);
         mInterstitial.setAdUnitId("ca-app-pub-2941808068005217/4872724597");
         mInterstitial.loadAd(new AdRequest.Builder().build());
+        updatecode.analyticsFirebase(context, "loaded_google_ads", "loaded_google_ads");
+
         mInterstitial.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
-                Intent clickintent = new Intent(context, PremiumActivity1.class);
-
-                clickintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-                stackBuilder.addNextIntentWithParentStack(clickintent);
-                PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    NotificationChannel channel = new NotificationChannel("ADS NOTIFICATION", "Ads Upload",
-                            NotificationManager.IMPORTANCE_HIGH);
-
-                    NotificationManager manager = context.getSystemService(NotificationManager.class);
-                    manager.createNotificationChannel(channel);
-                }
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "ADS NOTIFICATION");
-                builder.setContentTitle(context.getResources().getString(R.string.adsshowing));
-                builder.setContentText(context.getResources().getString(R.string.adsshowingtitle));
-                builder.setContentIntent(pendingIntent);
-                builder.setSmallIcon(R.mipmap.logo);
-                builder.setAutoCancel(true);
-                builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-                notificationManager.notify(147, builder.build());
-
-                updatecode.analyticsFirebase(context, "loaded_google_ads", "loaded_google_ads");
 
                 if (mInterstitial.isLoaded()) {
+                    Intent clickintent = new Intent(context, PremiumActivity1.class);
+
+                    clickintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                    TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+                    stackBuilder.addNextIntentWithParentStack(clickintent);
+                    PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        NotificationChannel channel = new NotificationChannel("ADS NOTIFICATION", "Ads Upload",
+                                NotificationManager.IMPORTANCE_HIGH);
+
+                        NotificationManager manager = context.getSystemService(NotificationManager.class);
+                        manager.createNotificationChannel(channel);
+                    }
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "ADS NOTIFICATION");
+                    builder.setContentTitle(context.getResources().getString(R.string.adsshowing));
+                    builder.setContentText(context.getResources().getString(R.string.adsshowingtitle));
+                    builder.setContentIntent(pendingIntent);
+                    builder.setSmallIcon(R.mipmap.logo);
+                    builder.setAutoCancel(true);
+                    builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                    NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+                    notificationManager.notify(147, builder.build());
+
 
                     updatecode.analyticsFirebase(context, "showed_google_ads", "showed_google_ads");
                     mInterstitial.show();
                 }
+
+
             }
 
             @Override
             public void onAdFailedToLoad(LoadAdError adError) {
                 // Code to be executed when an ad request fails.
-                loadAds(context, type);
             }
 
             @Override
@@ -2523,6 +2526,8 @@ public class updatecode {
             }
 
         });
+
+
     }
 
 

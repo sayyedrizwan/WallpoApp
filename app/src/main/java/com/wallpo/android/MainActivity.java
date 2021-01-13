@@ -3,6 +3,9 @@ package com.wallpo.android;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityOptions;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -28,10 +31,18 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.app.TaskStackBuilder;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.transition.TransitionManager;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.security.ProviderInstaller;
@@ -59,6 +70,7 @@ import com.wallpo.android.fragment.ProfileFragment;
 import com.wallpo.android.fragment.SearchFragment;
 import com.wallpo.android.fragment.TrendingFragment;
 import com.wallpo.android.service.HourlyNoticeService;
+import com.wallpo.android.subscription.PremiumActivity1;
 import com.wallpo.android.utils.Common;
 import com.wallpo.android.utils.URLS;
 import com.wallpo.android.utils.customListeners;
@@ -138,32 +150,9 @@ public class MainActivity extends AppCompatActivity {
         int height = displayMetrics.heightPixels;
         int width = displayMetrics.widthPixels;
 
+        updatecode.loadAds(context, "popup");
+
         Log.d("MainActivity", "onCreate: ratio " + height + " - " + width);
-        OkHttpClient client = new OkHttpClient();
-
-        okhttp3.Request request = new okhttp3.Request.Builder()
-                .url(URLS.normaladslist)
-                .get()
-                .addHeader("Content-Type", "application/x-www-form-urlencoded")
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
-
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e(TAG, "onFailure: ", e);
-            }
-
-            @Override
-            public void onResponse(Call call, final Response response) throws IOException {
-                final String data = response.body().string().replaceAll(",\\[]", "");
-
-
-                Document document = Jsoup.parse(data);
-                Elements elements = document.select("meta");
-                Log.d(TAG, "onResponse: itt" + elements);
-            }
-        });
 
         SharedPreferences sharedPreferencess = context.getSharedPreferences("wallpoonetime", Context.MODE_PRIVATE);
 
