@@ -1,6 +1,7 @@
 package com.wallpo.android.utils;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -2450,38 +2451,38 @@ public class updatecode {
         mInterstitial.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
+                if (!updatecode.isAppIsInBackground(context)) {
+                    if (mInterstitial.isLoaded()) {
+                        Intent clickintent = new Intent(context, PremiumActivity1.class);
 
-                if (mInterstitial.isLoaded()) {
-                    Intent clickintent = new Intent(context, PremiumActivity1.class);
+                        clickintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                    clickintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+                        stackBuilder.addNextIntentWithParentStack(clickintent);
+                        PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
-                    TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-                    stackBuilder.addNextIntentWithParentStack(clickintent);
-                    PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            NotificationChannel channel = new NotificationChannel("ADS NOTIFICATION", "Ads Upload",
+                                    NotificationManager.IMPORTANCE_HIGH);
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        NotificationChannel channel = new NotificationChannel("ADS NOTIFICATION", "Ads Upload",
-                                NotificationManager.IMPORTANCE_HIGH);
+                            NotificationManager manager = context.getSystemService(NotificationManager.class);
+                            manager.createNotificationChannel(channel);
+                        }
+                        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "ADS NOTIFICATION");
+                        builder.setContentTitle(context.getResources().getString(R.string.adsshowing));
+                        builder.setContentText(context.getResources().getString(R.string.adsshowingtitle));
+                        builder.setContentIntent(pendingIntent);
+                        builder.setSmallIcon(R.mipmap.logo);
+                        builder.setAutoCancel(true);
+                        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+                        notificationManager.notify(147, builder.build());
 
-                        NotificationManager manager = context.getSystemService(NotificationManager.class);
-                        manager.createNotificationChannel(channel);
+
+                        updatecode.analyticsFirebase(context, "showed_google_ads", "showed_google_ads");
+                        mInterstitial.show();
                     }
-                    NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "ADS NOTIFICATION");
-                    builder.setContentTitle(context.getResources().getString(R.string.adsshowing));
-                    builder.setContentText(context.getResources().getString(R.string.adsshowingtitle));
-                    builder.setContentIntent(pendingIntent);
-                    builder.setSmallIcon(R.mipmap.logo);
-                    builder.setAutoCancel(true);
-                    builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-                    NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-                    notificationManager.notify(147, builder.build());
-
-
-                    updatecode.analyticsFirebase(context, "showed_google_ads", "showed_google_ads");
-                    mInterstitial.show();
                 }
-
 
             }
 
@@ -2530,6 +2531,30 @@ public class updatecode {
 
     }
 
+    public static boolean isAppIsInBackground(Context context) {
+        boolean isInBackground = true;
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT_WATCH) {
+            List<ActivityManager.RunningAppProcessInfo> runningProcesses = am.getRunningAppProcesses();
+            for (ActivityManager.RunningAppProcessInfo processInfo : runningProcesses) {
+                if (processInfo.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
+                    for (String activeProcess : processInfo.pkgList) {
+                        if (activeProcess.equals(context.getPackageName())) {
+                            isInBackground = false;
+                        }
+                    }
+                }
+            }
+        } else {
+            List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
+            ComponentName componentInfo = taskInfo.get(0).topActivity;
+            if (componentInfo.getPackageName().equals(context.getPackageName())) {
+                isInBackground = false;
+            }
+        }
+
+        return isInBackground;
+    }
 
     public static void showads(Context context, String type, String oneheadline1,
                                String oneheadline2, String link, String imagepath, String visit, String userid,

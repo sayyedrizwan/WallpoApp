@@ -21,8 +21,8 @@ android {
         applicationId "com.wallpo.android"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 224
-        versionName "1.06.254597"
+        versionCode 225
+        versionName "1.06.254598"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
