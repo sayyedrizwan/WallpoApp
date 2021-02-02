@@ -152,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
         updatecode.loadAds(context, "popup");
 
+
         Log.d("MainActivity", "onCreate: ratio " + height + " - " + width);
 
         SharedPreferences sharedPreferencess = context.getSharedPreferences("wallpoonetime", Context.MODE_PRIVATE);
