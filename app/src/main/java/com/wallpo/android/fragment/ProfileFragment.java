@@ -43,6 +43,7 @@ import com.wallpo.android.R;
 import com.wallpo.android.activity.EditProfileActivity;
 import com.wallpo.android.activity.FavouriteActivity;
 import com.wallpo.android.activity.LikedPostsActivity;
+import com.wallpo.android.activity.LockscreenActivity;
 import com.wallpo.android.activity.MessageActivity;
 import com.wallpo.android.activity.MultipleAccountsActivity;
 import com.wallpo.android.activity.TwoAuthActivity;
@@ -82,7 +83,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 public class ProfileFragment extends Fragment {
 
     CardView logout, favourite, editprofile, cardview, twoauthsignin, likedsignin, viewprofile, premium, community;
-    CardView multipleaccounts, message, usedposts, wallpapersetting, upload, image, video, changelanugau, wallposhare, feedback;
+    CardView multipleaccounts, message, usedposts, wallpapersetting, upload, image, video, changelanugau, wallposhare, feedback, lock;
     public static ImageView profilepic;
     public static TextView displayname, textPosts;
     RelativeLayout dislay;
@@ -126,6 +127,7 @@ public class ProfileFragment extends Fragment {
         premium = view.findViewById(R.id.premium);
         community = view.findViewById(R.id.community);
         notificationswitch = view.findViewById(R.id.notificationswitch);
+        lock = view.findViewById(R.id.lock);
 
         sharepref = getApplicationContext().getSharedPreferences("wallpo", Context.MODE_PRIVATE);
         String userid = sharepref.getString("wallpouserid", "");
@@ -156,6 +158,8 @@ public class ProfileFragment extends Fragment {
         usedposts.setOnClickListener(v -> startActivity(new Intent(getActivity(), UsedActivity.class)));
 
         premium.setOnClickListener(v -> startActivity(new Intent(getActivity(), PremiumActivity1.class)));
+
+        lock.setOnClickListener(v -> startActivity(new Intent(getActivity(), LockscreenActivity.class)));
 
 
         community.setOnClickListener(v -> {

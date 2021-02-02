@@ -38,7 +38,8 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustPan"
         tools:ignore="UnusedAttribute">
-        <activity android:name=".utils.WallpaperWebActivity"></activity>
+        <activity android:name=".activity.LockscreenActivity"></activity>
+        <activity android:name=".utils.WallpaperWebActivity" />
         <activity android:name=".maps.UploadMapActivity" />
         <activity android:name=".subscription.PremiumActivity" />
         <activity android:name=".subscription.PremiumActivity1" />

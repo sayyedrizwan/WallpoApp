@@ -551,4 +551,5 @@
     <string name="reedemcoupon">Redeem Coupon</string>
     <string name="reedemcoupontxt">Enter coupon code and click on redeem which will redirect you to Play Store. or you can go to Play Store click on Redeem in Nav Menu and add the code to get Premium subscription.</string>
     <string name="couponhind">XXXXXXXXXXXXXXXXXXXXXXX</string>
+    <string name="custlockscreen">Customize Lock screen</string>
 </resources>
