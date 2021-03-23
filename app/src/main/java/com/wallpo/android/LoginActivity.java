@@ -119,6 +119,7 @@ public class LoginActivity extends AppCompatActivity {
 
         sharedPreferences = context.getSharedPreferences("wallpo", Context.MODE_PRIVATE);
 
+
         MainActivity.getlocation(context);
 
         termandcondition.setOnClickListener(view -> {
