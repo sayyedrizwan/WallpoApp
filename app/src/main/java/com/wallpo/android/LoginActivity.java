@@ -161,30 +161,27 @@ public class LoginActivity extends AppCompatActivity {
                 break;
         }
 
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        signup.setOnClickListener(view -> {
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    TransitionManager.beginDelayedTransition(mainid);
-                }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                TransitionManager.beginDelayedTransition(mainid);
+            }
 
-                if (username.getVisibility() == VISIBLE) {
+            if (username.getVisibility() == VISIBLE) {
 
-                    username.setVisibility(GONE);
-                    loginnot.setText(context.getResources().getString(R.string.loginbig));
-                    signup.setText(getResources().getString(R.string.donthaveaccount));
-                    signintext.setText(context.getResources().getString(R.string.signin));
+                username.setVisibility(GONE);
+                loginnot.setText(context.getResources().getString(R.string.loginbig));
+                signup.setText(getResources().getString(R.string.donthaveaccount));
+                signintext.setText(context.getResources().getString(R.string.signin));
 
 
-                } else {
+            } else {
 
-                    username.setVisibility(View.VISIBLE);
-                    loginnot.setText(context.getResources().getString(R.string.signupbig));
-                    signup.setText(context.getResources().getString(R.string.loginsmall));
-                    signintext.setText(context.getResources().getString(R.string.signin));
-                    signintext.setText(context.getResources().getString(R.string.signup));
-                }
+                username.setVisibility(View.VISIBLE);
+                loginnot.setText(context.getResources().getString(R.string.signupbig));
+                signup.setText(context.getResources().getString(R.string.loginsmall));
+                signintext.setText(context.getResources().getString(R.string.signin));
+                signintext.setText(context.getResources().getString(R.string.signup));
             }
         });
 
