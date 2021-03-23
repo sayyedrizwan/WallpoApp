@@ -118,10 +118,7 @@ public class LoginActivity extends AppCompatActivity {
         termandcondition = findViewById(R.id.termandcondition);
 
         sharedPreferences = context.getSharedPreferences("wallpo", Context.MODE_PRIVATE);
-
-
         MainActivity.getlocation(context);
-
         termandcondition.setOnClickListener(view -> {
             Intent viewIntent =
                     new Intent("android.intent.action.VIEW",
@@ -383,12 +380,12 @@ public class LoginActivity extends AppCompatActivity {
 
             done.setOnClickListener(view1 -> {
 
-                 if (email.getText().toString().isEmpty()){
+                if (email.getText().toString().isEmpty()) {
                     Toast.makeText(context, context.getResources().getString(R.string.entervalidemail), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (!email.getText().toString().contains("@")){
+                if (!email.getText().toString().contains("@")) {
                     Toast.makeText(context, context.getResources().getString(R.string.entervalidemail), Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -429,15 +426,15 @@ public class LoginActivity extends AppCompatActivity {
 
                         runOnUiThread(() -> {
 
-                            if (data.trim().contains("nofound")){
+                            if (data.trim().contains("nofound")) {
                                 loadingbar.setVisibility(GONE);
 
                                 Toast.makeText(context, context.getResources().getString(R.string.emailnotfound), Toast.LENGTH_SHORT).show();
-                            }else if (data.trim().contains("error")){
+                            } else if (data.trim().contains("error")) {
                                 loadingbar.setVisibility(GONE);
 
                                 Toast.makeText(context, context.getResources().getString(R.string.errorwhilsending), Toast.LENGTH_SHORT).show();
-                            }else if (data.trim().contains("done")){
+                            } else if (data.trim().contains("done")) {
                                 loadingbar.setVisibility(GONE);
 
                                 Toast.makeText(context, context.getResources().getString(R.string.resetlinksend), Toast.LENGTH_SHORT).show();
@@ -446,7 +443,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                 dialog.dismiss();
 
-                            }else{
+                            } else {
                                 loadingbar.setVisibility(GONE);
 
                                 Toast.makeText(context, context.getResources().getString(R.string.errorwhilesendingmail), Toast.LENGTH_SHORT).show();
@@ -606,7 +603,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Common.logintype = "";
 
-        if (photo == null){
+        if (photo == null) {
             photo = "";
         }
 
