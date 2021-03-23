@@ -126,35 +126,39 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(viewIntent);
         });
 
-        if (Common.logintype.equals("fblogin")) {
+        switch (Common.logintype) {
+            case "fblogin":
 
-            fbbutton.performClick();
+                fbbutton.performClick();
 
-            updatecode.analyticsFirebase(context, "fb_login", "fb_login");
+                updatecode.analyticsFirebase(context, "fb_login", "fb_login");
 
-        } else if (Common.logintype.equals("googlelogin")) {
+                break;
+            case "googlelogin":
 
-            deleteCache(context);
+                deleteCache(context);
 
-            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    .requestEmail()
-                    .build();
+                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestEmail()
+                        .build();
 
-            GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(LoginActivity.this, gso);
+                GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(LoginActivity.this, gso);
 
-            Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-            startActivityForResult(signInIntent, 102);
+                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                startActivityForResult(signInIntent, 102);
 
-        } else if (Common.logintype.equals("wallpologin")) {
+                break;
+            case "wallpologin":
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                TransitionManager.beginDelayedTransition(mainid);
-            }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    TransitionManager.beginDelayedTransition(mainid);
+                }
 
-            signin.setVisibility(GONE);
-            login.setVisibility(View.VISIBLE);
+                signin.setVisibility(GONE);
+                login.setVisibility(View.VISIBLE);
 
-            ((CardView) findViewById(R.id.wallposign)).setCardBackgroundColor(getResources().getColor(R.color.white));
+                ((CardView) findViewById(R.id.wallposign)).setCardBackgroundColor(getResources().getColor(R.color.white));
+                break;
         }
 
         signup.setOnClickListener(new View.OnClickListener() {
