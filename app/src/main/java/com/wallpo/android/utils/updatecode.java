@@ -1,5 +1,10 @@
 package com.wallpo.android.utils;
 
+import static android.content.ContentValues.TAG;
+import static android.view.View.GONE;
+import static com.google.firebase.database.ServerValue.TIMESTAMP;
+import static com.wallpo.android.MainActivity.initializeSSLContext;
+
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.Dialog;
@@ -48,8 +53,9 @@ import androidx.transition.TransitionManager;
 import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.BillingClientStateListener;
 import com.android.billingclient.api.BillingResult;
-import com.android.billingclient.api.Purchase;
+import com.android.billingclient.api.PurchaseHistoryRecord;
 import com.android.billingclient.api.PurchasesUpdatedListener;
+import com.android.billingclient.api.QueryPurchaseHistoryParams;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.github.ybq.android.spinkit.SpinKitView;
@@ -67,11 +73,11 @@ import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
@@ -81,7 +87,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.mega4tech.linkpreview.GetLinkPreviewListener;
 import com.mega4tech.linkpreview.LinkPreview;
 import com.mega4tech.linkpreview.LinkUtil;
@@ -95,7 +101,6 @@ import com.tonyodev.fetch2.Priority;
 import com.tonyodev.fetch2.Request;
 import com.tonyodev.fetch2core.DownloadBlock;
 import com.wallpo.android.R;
-import com.wallpo.android.activity.ViewPostsActivity;
 import com.wallpo.android.activity.WallpaperSetActivity;
 import com.wallpo.android.adapter.messageshareadapter;
 import com.wallpo.android.extra.DeepLinkActivity;
@@ -132,11 +137,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-import static android.content.ContentValues.TAG;
-import static android.view.View.GONE;
-import static com.google.firebase.database.ServerValue.TIMESTAMP;
-import static com.wallpo.android.MainActivity.initializeSSLContext;
-
 public class updatecode {
 
     public static String tz = TimeZone.getDefault().getID();
@@ -154,15 +154,14 @@ public class updatecode {
             return;
         }
 
-        FirebaseInstanceId.getInstance().getInstanceId()
+        FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(task -> {
                     if (!task.isSuccessful()) {
-                        Log.w("MainActivity", "getInstanceId failed", task.getException());
-
+                        Log.w(TAG, "Fetching FCM registration token failed", task.getException());
                         return;
                     }
-                    final String token = task.getResult().getToken();
 
+                    String token = task.getResult();
                     OkHttpClient client = new OkHttpClient();
 
                     okhttp3.Request request = new okhttp3.Request.Builder()
@@ -189,7 +188,6 @@ public class updatecode {
                             });
                         }
                     });
-
                 });
     }
 
@@ -1622,18 +1620,33 @@ public class updatecode {
             @Override
             public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
                 if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    List<Purchase> billingClient1 = billingClient.queryPurchases(BillingClient.SkuType.SUBS).getPurchasesList();
+                    billingClient.queryPurchaseHistoryAsync(
+                            QueryPurchaseHistoryParams.newBuilder()
+                                    .setProductType(BillingClient.ProductType.SUBS)
+                                    .build(), (billingResult1, purchasesHistoryList) -> {
 
-                    sharedPreferences.edit().putBoolean("userIsPremium", false).apply();
+                                for (PurchaseHistoryRecord purchaseHistoryRecord : purchasesHistoryList) {
+                                    String time = String.valueOf(purchaseHistoryRecord.getPurchaseTime());
+                                    String productId = String.valueOf(purchaseHistoryRecord.getSkus());
 
-                    for (Purchase purchaseHistoryRecord : billingClient1) {
-                        String time = String.valueOf(purchaseHistoryRecord.getPurchaseTime());
-                        String productId = purchaseHistoryRecord.getSku();
-
-                        if (!time.isEmpty()) {
-                            sharedPreferences.edit().putBoolean("userIsPremium", true).apply();
-                        }
-                    }
+                                    if (!time.isEmpty()) {
+                                        sharedPreferences.edit().putBoolean("userIsPremium", true).apply();
+                                    }
+                                }
+                            }
+                    );
+//                    List<Purchase> billingClient1 = billingClient.queryProductDetailsAsync(BillingClient.SkuType.SUBS).getPurchasesList();
+//
+//                    sharedPreferences.edit().putBoolean("userIsPremium", false).apply();
+//
+//                    for (Purchase purchaseHistoryRecord : billingClient1) {
+//                        String time = String.valueOf(purchaseHistoryRecord.getPurchaseTime());
+//                        String productId = purchaseHistoryRecord.getSku();
+//
+//                        if (!time.isEmpty()) {
+//                            sharedPreferences.edit().putBoolean("userIsPremium", true).apply();
+//                        }
+//                    }
 
                 }
             }
@@ -2202,10 +2215,12 @@ public class updatecode {
     public static void loadAds(Context context, String type) {
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("wallpopremium", Context.MODE_PRIVATE);
+        Log.d(TAG, "loadAds: popup "+ sharedPreferences.getBoolean("userIsPremium", false));
+//        if (sharedPreferences.getBoolean("userIsPremium", false)) {
+//            return;
+//        }
 
-        if (sharedPreferences.getBoolean("userIsPremium", false)) {
-            return;
-        }
+        gads(context, type);
 
         int adsmainscreen = sharedPreferences.getInt("adsmainscreenload", 0);
 
@@ -2443,92 +2458,54 @@ public class updatecode {
         MobileAds.initialize(context, initializationStatus -> {
         });
 
-        InterstitialAd mInterstitial = new InterstitialAd(context);
-        mInterstitial.setAdUnitId("ca-app-pub-2941808068005217/4872724597");
-        mInterstitial.loadAd(new AdRequest.Builder().build());
+        AdRequest adRequest = new AdRequest.Builder().build();
+
         updatecode.analyticsFirebase(context, "loaded_google_ads", "loaded_google_ads");
 
-        mInterstitial.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                if (!updatecode.isAppIsInBackground(context)) {
-                    if (mInterstitial.isLoaded()) {
-                        Intent clickintent = new Intent(context, PremiumActivity1.class);
+        InterstitialAd.load(context, "ca-app-pub-2941808068005217/4872724597", adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        if (!updatecode.isAppIsInBackground(context)) {
+                            Intent clickintent = new Intent(context, PremiumActivity1.class);
 
-                        clickintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            clickintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-                        stackBuilder.addNextIntentWithParentStack(clickintent);
-                        PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+                            TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+                            stackBuilder.addNextIntentWithParentStack(clickintent);
+                            PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            NotificationChannel channel = new NotificationChannel("ADS NOTIFICATION", "Ads Upload",
-                                    NotificationManager.IMPORTANCE_HIGH);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                NotificationChannel channel = new NotificationChannel("ADS NOTIFICATION", "Ads Upload",
+                                        NotificationManager.IMPORTANCE_HIGH);
 
-                            NotificationManager manager = context.getSystemService(NotificationManager.class);
-                            manager.createNotificationChannel(channel);
+                                NotificationManager manager = context.getSystemService(NotificationManager.class);
+                                manager.createNotificationChannel(channel);
+                            }
+                            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "ADS NOTIFICATION");
+                            builder.setContentTitle(context.getResources().getString(R.string.adsshowing));
+                            builder.setContentText(context.getResources().getString(R.string.adsshowingtitle));
+                            builder.setContentIntent(pendingIntent);
+                            builder.setSmallIcon(R.mipmap.logo);
+                            builder.setAutoCancel(true);
+                            builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+                            notificationManager.notify(147, builder.build());
+
+                            interstitialAd.show((Activity) context);
+
+                            updatecode.analyticsFirebase(context, "showed_google_ads", "showed_google_ads");
                         }
-                        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "ADS NOTIFICATION");
-                        builder.setContentTitle(context.getResources().getString(R.string.adsshowing));
-                        builder.setContentText(context.getResources().getString(R.string.adsshowingtitle));
-                        builder.setContentIntent(pendingIntent);
-                        builder.setSmallIcon(R.mipmap.logo);
-                        builder.setAutoCancel(true);
-                        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-                        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-                        notificationManager.notify(147, builder.build());
-
-
-                        updatecode.analyticsFirebase(context, "showed_google_ads", "showed_google_ads");
-                        mInterstitial.show();
                     }
-                }
 
-            }
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
 
-            @Override
-            public void onAdFailedToLoad(LoadAdError adError) {
-                // Code to be executed when an ad request fails.
-            }
+                        Log.d(TAG, "onAdFailedToLoad: "+ loadAdError.getMessage());
+                    }
 
-            @Override
-            public void onAdOpened() {
-                // Code to be executed when the ad is displayed.
-            }
-
-            @Override
-            public void onAdClicked() {
-                // Code to be executed when the user clicks on an ad.
-            }
-
-            @Override
-            public void onAdLeftApplication() {
-                // Code to be executed when the user has left the app.
-            }
-
-            @Override
-            public void onAdClosed() {
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    NotificationChannel channel = new NotificationChannel("ADS NOTIFICATION", "Ads Upload",
-                            NotificationManager.IMPORTANCE_HIGH);
-
-                    NotificationManager manager = context.getSystemService(NotificationManager.class);
-                    manager.createNotificationChannel(channel);
-                }
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "ADS NOTIFICATION");
-                builder.setContentTitle(context.getResources().getString(R.string.adsshowed));
-                builder.setContentText(context.getResources().getString(R.string.adsshowedtitle));
-                builder.setSmallIcon(R.mipmap.logo);
-                builder.setAutoCancel(true);
-                builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-                notificationManager.notify(147, builder.build());
-            }
-
-        });
-
-
+                });
     }
 
     public static boolean isAppIsInBackground(Context context) {

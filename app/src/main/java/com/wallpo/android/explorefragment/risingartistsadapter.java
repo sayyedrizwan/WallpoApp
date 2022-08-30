@@ -1,5 +1,7 @@
 package com.wallpo.android.explorefragment;
 
+import static android.content.ContentValues.TAG;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +17,6 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ablanco.zoomy.TapListener;
 import com.ablanco.zoomy.Zoomy;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -41,8 +42,6 @@ import com.wallpo.android.activity.ViewPostsActivity;
 import com.wallpo.android.getset.Photos;
 
 import java.util.List;
-
-import static android.content.ContentValues.TAG;
 
 public class risingartistsadapter extends RecyclerView.Adapter<risingartistsadapter.ViewHolder> {
     private Context context;

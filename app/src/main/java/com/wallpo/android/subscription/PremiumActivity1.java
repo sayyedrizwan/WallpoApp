@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -23,13 +22,15 @@ import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.BillingClientStateListener;
 import com.android.billingclient.api.BillingFlowParams;
 import com.android.billingclient.api.BillingResult;
+import com.android.billingclient.api.ProductDetails;
 import com.android.billingclient.api.Purchase;
-import com.android.billingclient.api.PurchaseHistoryRecord;
 import com.android.billingclient.api.PurchasesUpdatedListener;
+import com.android.billingclient.api.QueryProductDetailsParams;
 import com.android.billingclient.api.SkuDetails;
 import com.android.billingclient.api.SkuDetailsParams;
 import com.github.ybq.android.spinkit.SpinKitView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.crashlytics.internal.model.ImmutableList;
 import com.wallpo.android.R;
 import com.wallpo.android.utils.URLS;
 import com.wallpo.android.utils.updatecode;
@@ -175,11 +176,11 @@ public class PremiumActivity1 extends AppCompatActivity implements PurchasesUpda
 
         PurchasesUpdatedListener purchaseUpdateListener = (billingResult, list) -> {
 
-            try{
+            try {
                 for (Purchase purchase : list) {
 
                     String orderId = purchase.getOrderId();
-                    final String productId = purchase.getSku();
+                    final String productId = purchase.getPurchaseToken();
                     final String purchaseTime = String.valueOf(purchase.getPurchaseTime());
                     final String purchaseToken = purchase.getPurchaseToken();
 
@@ -229,7 +230,7 @@ public class PremiumActivity1 extends AppCompatActivity implements PurchasesUpda
                         });
                     }
                 }
-            }catch (NullPointerException e){
+            } catch (NullPointerException e) {
                 Log.d("TAG", "onCreate: " + e);
             }
 
@@ -242,82 +243,70 @@ public class PremiumActivity1 extends AppCompatActivity implements PurchasesUpda
 
         billingClient.startConnection(new BillingClientStateListener() {
             @Override
-            public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+            public void onBillingSetupFinished(@NonNull BillingResult response) {
+                if (response.getResponseCode() == BillingClient.BillingResponseCode.OK) {
                     spin_kit.setVisibility(View.GONE);
 
-                    List<Purchase> billingClient1 = billingClient.queryPurchases(BillingClient.SkuType.SUBS).getPurchasesList();
+                    QueryProductDetailsParams.Product product = QueryProductDetailsParams.Product.newBuilder()
+                            .setProductId(subid)
+                            .setProductType(BillingClient.ProductType.SUBS)
+                            .build();
 
-                    sharedPreferences.edit().putBoolean("userIsPremium", false).apply();
+                    QueryProductDetailsParams queryProductDetailsParams = QueryProductDetailsParams.newBuilder()
+                            .setProductList(List.of(product))
+                            .build();
 
-                    for (Purchase purchaseHistoryRecord : billingClient1) {
+                    billingClient.queryProductDetailsAsync(queryProductDetailsParams, (billingResult, productDetailsList) -> {
 
-                        String time = String.valueOf(purchaseHistoryRecord.getPurchaseTime());
-                        String productId = purchaseHistoryRecord.getSku();
+                        sharedPreferences.edit().putBoolean("userIsPremium", false).apply();
 
-                        if (!time.isEmpty()) {
-                            sharedPreferences.edit().putBoolean("userIsPremium", true).apply();
-                            try {
-                                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-                                Date date = format.parse(updatecode.getDate(Long.parseLong(time), "dd-MM-yyyy"));
-                                Calendar calendar = Calendar.getInstance();
-                                calendar.setTime(date);
-
-                                switch (productId) {
-                                    case "sixmonthssub":
-                                        calendar.add(Calendar.MONTH, 6);
-                                        break;
-                                    case "onemonthssubscription":
-                                        calendar.add(Calendar.MONTH, 1);
-                                        break;
-                                    case "yearlysub":
-                                        calendar.add(Calendar.MONTH, 12);
-                                        break;
-                                    default:
-                                        calendar.add(Calendar.MONTH, 0);
-                                        break;
-                                }
-
-                                Date newDate = calendar.getTime();
-                                String sixmonthsdate = format.format(calendar.getTime());
-
-                                SimpleDateFormat formats = new SimpleDateFormat("EEEE, MMMM d, yyyy");
-                                String datelast = formats.format(calendar.getTime());
-
-                                expirydate.setText("" + datelast);
-
-                            } catch (ParseException e) {
-                                Log.d("TAG", "onBillingSetupFinished: e");
+                        for (ProductDetails productDetails : productDetailsList) {
+                            assert productDetails.getSubscriptionOfferDetails() != null;
+                            for (ProductDetails.SubscriptionOfferDetails selectedOfferToken : productDetails.getSubscriptionOfferDetails()) {
+                                ImmutableList productDetailsParamsList =
+                                        (ImmutableList) List.of(BillingFlowParams.ProductDetailsParams.newBuilder()
+                                                .setProductDetails(productDetails)
+                                                .setOfferToken(selectedOfferToken.getOfferToken())
+                                                .build()
+                                        );
+                                BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
+                                        .setProductDetailsParamsList(productDetailsParamsList)
+                                        .build();
+                                BillingResult billingResultR = billingClient.launchBillingFlow(PremiumActivity1.this, billingFlowParams);
                             }
-
-                        }
-                    }
-
-                    billingClient.queryPurchaseHistoryAsync(BillingClient.SkuType.SUBS, (billingResult1, list) -> {
-
-                        for (PurchaseHistoryRecord purchaseHistoryRecord : list) {
-
-                            String sku = purchaseHistoryRecord.getSku();
-
                         }
                     });
 
                     continues.setOnClickListener(view -> {
-                        List<String> skuList = new ArrayList<>();
-                        skuList.add(subid);
-                        SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
-                        params.setSkusList(skuList).setType(BillingClient.SkuType.SUBS);
-                        billingClient.querySkuDetailsAsync(params.build(),
-                                (billingResult1, skuDetailsList) -> {
+                        QueryProductDetailsParams.Product productN = QueryProductDetailsParams.Product.newBuilder()
+                                .setProductId(subid)
+                                .setProductType(BillingClient.ProductType.SUBS)
+                                .build();
+
+                        QueryProductDetailsParams queryProductDetailsParamsN = QueryProductDetailsParams.newBuilder()
+                                .setProductList(List.of(productN))
+                                .build();
+
+                        billingClient.queryProductDetailsAsync(queryProductDetailsParamsN, (billingResult, productDetailsList) -> {
+
+                            sharedPreferences.edit().putBoolean("userIsPremium", false).apply();
+
+                            for (ProductDetails productDetails : productDetailsList) {
+                                assert productDetails.getSubscriptionOfferDetails() != null;
+                                for (ProductDetails.SubscriptionOfferDetails selectedOfferToken : productDetails.getSubscriptionOfferDetails()) {
+                                    ImmutableList productDetailsParamsList =
+                                            (ImmutableList) List.of(BillingFlowParams.ProductDetailsParams.newBuilder()
+                                                    .setProductDetails(productDetails)
+                                                    .setOfferToken(selectedOfferToken.getOfferToken())
+                                                    .build()
+                                            );
                                     BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
-                                            .setSkuDetails(skuDetailsList.get(0))
+                                            .setProductDetailsParamsList(productDetailsParamsList)
                                             .build();
-                                    int responseCode = billingClient.launchBillingFlow(PremiumActivity1.this, billingFlowParams).getResponseCode();
-
-
-                                });
-
-                        Purchase.PurchasesResult result = billingClient.queryPurchases(BillingClient.SkuType.SUBS);
+                                    BillingResult billingResultR = billingClient.launchBillingFlow(PremiumActivity1.this, billingFlowParams);
+                                }
+                            }
+                        });
 
                     });
 
@@ -397,6 +386,51 @@ public class PremiumActivity1 extends AppCompatActivity implements PurchasesUpda
 
     @Override
     public void onPurchasesUpdated(@NonNull BillingResult billingResult, @Nullable List<Purchase> list) {
+        if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK & list != null) {
+            for (Purchase purchaseHistoryRecord : list) {
 
+                String time = String.valueOf(purchaseHistoryRecord.getPurchaseTime());
+                String productId = purchaseHistoryRecord.getSkus().toString();
+
+                if (!time.isEmpty()) {
+                    sharedPreferences.edit().putBoolean("userIsPremium", true).apply();
+                    try {
+                        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+                        Date date = format.parse(updatecode.getDate(Long.parseLong(time), "dd-MM-yyyy"));
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.setTime(date);
+
+                        switch (productId) {
+                            case "sixmonthssub":
+                                calendar.add(Calendar.MONTH, 6);
+                                break;
+                            case "onemonthssubscription":
+                                calendar.add(Calendar.MONTH, 1);
+                                break;
+                            case "yearlysub":
+                                calendar.add(Calendar.MONTH, 12);
+                                break;
+                            default:
+                                calendar.add(Calendar.MONTH, 0);
+                                calendar.add(Calendar.MONTH, 0);
+                                break;
+                        }
+
+                        Date newDate = calendar.getTime();
+                        String sixmonthsdate = format.format(calendar.getTime());
+
+                        SimpleDateFormat formats = new SimpleDateFormat("EEEE, MMMM d, yyyy");
+                        String datelast = formats.format(calendar.getTime());
+
+                        expirydate.setText("" + datelast);
+
+                    } catch (ParseException e) {
+                        Log.d("TAG", "onBillingSetupFinished: e");
+                    }
+
+                }
+            }
+
+        }
     }
 }

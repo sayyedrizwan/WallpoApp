@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,16 +15,17 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.widget.NestedScrollView;
 import androidx.transition.TransitionManager;
 
-import com.android.billingclient.api.AcknowledgePurchaseParams;
 import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.BillingClientStateListener;
 import com.android.billingclient.api.BillingFlowParams;
 import com.android.billingclient.api.BillingResult;
+import com.android.billingclient.api.ProductDetails;
 import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.PurchasesUpdatedListener;
-import com.android.billingclient.api.SkuDetailsParams;
+import com.android.billingclient.api.QueryProductDetailsParams;
 import com.github.ybq.android.spinkit.SpinKitView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.firebase.crashlytics.internal.model.ImmutableList;
 import com.wallpo.android.R;
 import com.wallpo.android.utils.URLS;
 import com.wallpo.android.utils.updatecode;
@@ -37,7 +37,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -46,7 +45,6 @@ import java.util.TimeZone;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
-import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -525,23 +523,8 @@ public class PremiumActivity extends AppCompatActivity implements PurchasesUpdat
             }
             billingClient.startConnection(new BillingClientStateListener() {
                 @Override
-                public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
-                    if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                        List<String> skuList = new ArrayList<>();
-                        skuList.add(subid);
-                        SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
-                        params.setSkusList(skuList).setType(BillingClient.SkuType.SUBS);
-                        billingClient.querySkuDetailsAsync(params.build(),
-                                (billingResult1, skuDetailsList) -> {
-                                    BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
-                                            .setSkuDetails(skuDetailsList.get(0))
-                                            .build();
-                                    int responseCode = billingClient.launchBillingFlow(PremiumActivity.this, billingFlowParams).getResponseCode();
-
-
-                                });
-
-                        Purchase.PurchasesResult result  =  billingClient.queryPurchases(BillingClient.SkuType.SUBS);
+                public void onBillingSetupFinished(@NonNull BillingResult result) {
+                    if (result.getResponseCode() == BillingClient.BillingResponseCode.OK) {
 
                     }
 

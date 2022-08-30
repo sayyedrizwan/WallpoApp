@@ -1,20 +1,19 @@
 package com.wallpo.android;
 
-import android.Manifest;
+import static android.content.ContentValues.TAG;
+import static com.wallpo.android.utils.Cache.deleteCache;
+import static com.wallpo.android.utils.updatecode.checkPremium;
+import static com.wallpo.android.utils.updatecode.updateFCM;
+
 import android.app.Activity;
 import android.app.ActivityOptions;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Pair;
@@ -31,18 +30,10 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.core.app.TaskStackBuilder;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.transition.TransitionManager;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.security.ProviderInstaller;
@@ -53,14 +44,7 @@ import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.Task;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionDeniedResponse;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.single.PermissionListener;
 import com.wallpo.android.fragment.ExploreFragment;
 import com.wallpo.android.fragment.HomeFragment;
 import com.wallpo.android.fragment.MapsFragment;
@@ -70,19 +54,14 @@ import com.wallpo.android.fragment.ProfileFragment;
 import com.wallpo.android.fragment.SearchFragment;
 import com.wallpo.android.fragment.TrendingFragment;
 import com.wallpo.android.service.HourlyNoticeService;
-import com.wallpo.android.subscription.PremiumActivity1;
 import com.wallpo.android.utils.Common;
 import com.wallpo.android.utils.URLS;
 import com.wallpo.android.utils.customListeners;
 import com.wallpo.android.utils.updatecode;
-import com.wallpo.android.videoGallery.VideoFolder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
 
 import java.io.File;
 import java.io.IOException;
@@ -97,11 +76,6 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Response;
-
-import static android.content.ContentValues.TAG;
-import static com.wallpo.android.utils.Cache.deleteCache;
-import static com.wallpo.android.utils.updatecode.checkPremium;
-import static com.wallpo.android.utils.updatecode.updateFCM;
 
 @SuppressWarnings("unchecked")
 public class MainActivity extends AppCompatActivity {
@@ -157,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferencess = context.getSharedPreferences("wallpoonetime", Context.MODE_PRIVATE);
 
-        if(sharedPreferencess.getBoolean("wallpotutorials", true)){
+        if (sharedPreferencess.getBoolean("wallpotutorials", true)) {
             new Handler().postDelayed(() -> {
 
                 BottomSheetDialog dialog = new BottomSheetDialog(context);
@@ -183,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
             hourlyNoticeService.cancelHourlyService();
 
             new Handler().postDelayed(hourlyNoticeService::setHourlyService, 1000);
-        }else {
+        } else {
             HourlyNoticeService hourlyNoticeService = new HourlyNoticeService(this);
             hourlyNoticeService.cancelHourlyService();
 
@@ -200,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
         trending = findViewById(R.id.trending);
 
-        profile =findViewById(R.id.profile);
+        profile = findViewById(R.id.profile);
 
         monetize = findViewById(R.id.monetize);
 
@@ -214,32 +188,32 @@ public class MainActivity extends AppCompatActivity {
 
         framelayout = findViewById(R.id.framlayout);
 
-        fm.beginTransaction(). add(R.id.framlayout, homeFragment, "home").commit();
+        fm.beginTransaction().add(R.id.framlayout, homeFragment, "home").commit();
 
         MainActivity.home.setText(getResources().
 
-                        getString(R.string.Home));
+                getString(R.string.Home));
         MainActivity.trending.setText(getResources().
 
-                        getString(R.string.trending));
+                getString(R.string.trending));
         MainActivity.profile.setText(getResources().
 
-                        getString(R.string.profile));
+                getString(R.string.profile));
         MainActivity.explore.setText(getResources().
 
-                        getString(R.string.explore));
+                getString(R.string.explore));
         MainActivity.monetize.setText(getResources().
 
-                        getString(R.string.monetization));
+                getString(R.string.monetization));
         MainActivity.search.setText(getResources().
 
-                        getString(R.string.search));
+                getString(R.string.search));
         MainActivity.notification.setText(getResources().
 
-                        getString(R.string.notification));
+                getString(R.string.notification));
         MainActivity.notification.setText(getResources().
 
-                        getString(R.string.maps));
+                getString(R.string.maps));
         ExploreFragment.checkuser = false;
 
         try {
@@ -251,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        context.startService(new Intent(context, ChatMessageService.class));
 
-        home.setOnClickListener(view ->{
+        home.setOnClickListener(view -> {
 
             ExploreFragment.checkuser = false;
             if (homeFragment.getTag() == null) {
@@ -280,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        trending.setOnClickListener(view ->{
+        trending.setOnClickListener(view -> {
 
             ExploreFragment.checkuser = false;
             if (trendingFragment.getTag() == null) {
@@ -307,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        profile.setOnClickListener(view ->{
+        profile.setOnClickListener(view -> {
 
             ExploreFragment.checkuser = false;
             if (profileFragment.getTag() == null) {
@@ -334,7 +308,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        maps.setOnClickListener(view ->{
+        maps.setOnClickListener(view -> {
 
 
             ExploreFragment.checkuser = false;
@@ -366,7 +340,7 @@ public class MainActivity extends AppCompatActivity {
         customListeners listeners = new customListeners();
 
 
-        listeners.exploreFragmentListeners(title ->{
+        listeners.exploreFragmentListeners(title -> {
             try {
                 customListeners.playerlistener.onObjectReady("pause");
             } catch (NullPointerException e) {
@@ -446,7 +420,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        monetize.setOnClickListener(view ->{
+        monetize.setOnClickListener(view -> {
 
             ExploreFragment.checkuser = false;
 
@@ -475,7 +449,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        search.setOnClickListener(view ->{
+        search.setOnClickListener(view -> {
 
             ExploreFragment.checkuser = false;
 
@@ -504,7 +478,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        notification.setOnClickListener(view ->{
+        notification.setOnClickListener(view -> {
 
             ExploreFragment.checkuser = false;
             if (notificationFragment.getTag() == null) {
@@ -603,8 +577,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        googlelogin =findViewById(R.id.googlelogin);
-        googlelogin.setOnClickListener(view ->{
+        googlelogin = findViewById(R.id.googlelogin);
+        googlelogin.setOnClickListener(view -> {
 
             Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.imageeffect);
             googlelogin.startAnimation(animation);
@@ -625,8 +599,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        wallpologin =findViewById(R.id.wallpologin);
-        wallpologin.setOnClickListener(view ->{
+        wallpologin = findViewById(R.id.wallpologin);
+        wallpologin.setOnClickListener(view -> {
 
             Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.imageeffect);
             wallpologin.startAnimation(animation);
@@ -649,7 +623,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         loginin = findViewById(R.id.loginin);
-        loginin.setOnClickListener(view ->{
+        loginin.setOnClickListener(view -> {
             Intent i = new Intent(context, LoginActivity.class);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -710,11 +684,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == UPDATE_REQUEST_CODE){
+        if (requestCode == UPDATE_REQUEST_CODE) {
             sharedPreferences.edit().putString("updatetime", updatecode.getTimestampday()).apply();
             Log.d("TAG", "onActivityResult: Update");
             if (resultCode != RESULT_OK) {
-                Log.d("","Update flow failed! Result code: " + resultCode);
+                Log.d("", "Update flow failed! Result code: " + resultCode);
             }
 
         }
@@ -723,19 +697,19 @@ public class MainActivity extends AppCompatActivity {
     public static void getlocation(Context context) {
 
         final SharedPreferences sharedPreferences = context.getSharedPreferences("wallpo", Context.MODE_PRIVATE);
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(runnable -> {
-                    if (!runnable.isSuccessful()) {
-                        Log.w("MainActivity", "getInstanceId failed", runnable.getException());
 
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.w(TAG, "Fetching FCM registration token failed", task.getException());
                         return;
                     }
-                    final String token = runnable.getResult().getToken();
 
-
+                    String token = task.getResult();
                     sharedPreferences.edit().putString("fcmtoken", token).apply();
 
                 });
+
 
         OkHttpClient client = new OkHttpClient();
 
@@ -754,7 +728,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 final String data = response.body().string().replaceAll(",\\[]", "");
-                ((Activity)context).runOnUiThread(() -> {
+                ((Activity) context).runOnUiThread(() -> {
 
                     Log.d("TAG", "onResponse: ipadd " + data.trim());
                     sharedPreferences.edit().putString("useripaddress", data.trim()).apply();
@@ -774,7 +748,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call call, Response response) throws IOException {
                             final String data = response.body().string().replaceAll(",\\[]", "");
-                            ((Activity)context).runOnUiThread(() -> {
+                            ((Activity) context).runOnUiThread(() -> {
 
                                 if (data.contains("status\":\"success")) {
                                     String dataOutput = "[" + data + "]";

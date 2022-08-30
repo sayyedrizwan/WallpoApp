@@ -38,7 +38,7 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustPan"
         tools:ignore="UnusedAttribute">
-        <activity android:name=".activity.LockscreenActivity"></activity>
+        <activity android:name=".activity.LockscreenActivity" />
         <activity android:name=".utils.WallpaperWebActivity" />
         <activity android:name=".maps.UploadMapActivity" />
         <activity android:name=".subscription.PremiumActivity" />
@@ -47,6 +47,7 @@
         <activity android:name=".extra.LanguageActivity" />
         <activity
             android:name=".extra.DeepLinkActivity"
+            android:exported="true"
             android:label="@string/app_name">
             <intent-filter android:label="@string/app_name">
                 <action android:name="android.intent.action.VIEW" />
@@ -102,6 +103,7 @@
         <activity
             android:name=".uploads.UploadImageActivity"
             android:configChanges="orientation|screenSize"
+            android:exported="true"
             android:icon="@drawable/logo"
             android:label="Posts">
             <intent-filter>
@@ -137,6 +139,7 @@
 
         <activity
             android:name=".uploads.VideoTrimmerActivity"
+            android:exported="true"
             android:icon="@drawable/logo"
             android:label="Fire Wall"
             android:windowSoftInputMode="adjustResize|stateHidden">
@@ -150,6 +153,7 @@
         </activity>
         <activity
             android:name=".uploads.VideoTrimmerUploadActivity"
+            android:exported="true"
             android:icon="@drawable/logo"
             android:label="Posts"
             android:windowSoftInputMode="adjustResize|stateHidden">
@@ -179,6 +183,7 @@
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".uploads.ImagestatusActivity"
+            android:exported="false"
             android:icon="@drawable/logo"
             android:label="Fire Wall"
             android:windowSoftInputMode="adjustResize|stateHidden">
@@ -192,6 +197,7 @@
         </activity>
         <activity
             android:name=".uploads.StatusActivity"
+            android:exported="false"
             android:icon="@drawable/logo"
             android:label="Fire Wall"
             android:windowSoftInputMode="adjustResize|stateHidden">
@@ -249,6 +255,7 @@
 
         <service
             android:name=".utils.VideoWallpaperService"
+            android:exported="false"
             android:label="Set wallpo live wallpaper"
             android:permission="android.permission.BIND_WALLPAPER">
             <intent-filter>
@@ -269,6 +276,7 @@
 
         <service
             android:name=".utils.VideoWallpaperMuteService"
+            android:exported="false"
             android:label="Set wallpo live wallpaper"
             android:permission="android.permission.BIND_WALLPAPER">
             <intent-filter>
@@ -282,8 +290,11 @@
 
         <activity
             android:name=".videoGallery.VideoFolder"
-            android:configChanges="orientation|screenSize" />
-        <activity android:name=".SplashActivity">
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
